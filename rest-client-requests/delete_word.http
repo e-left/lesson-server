@@ -1,0 +1,5 @@
+DELETE http://localhost:3000/api/deleteAncientWord
+Content-Type: application/json
+{
+    "id": 1
+}

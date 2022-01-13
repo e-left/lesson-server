@@ -1,0 +1,7 @@
+POST http://localhost:3000/api/addAncientWord
+Content-Type: application/json
+{
+    "title": "succ",
+    "content": "Auto einai ena arxaio pragma",
+    "category": "noun"
+}

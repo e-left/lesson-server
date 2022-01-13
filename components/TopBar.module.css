@@ -1,0 +1,15 @@
+.topbar {
+    background-color: lightblue;
+    margin: 0 10px 20px 10px;
+    padding: 20px;
+    border-radius: 0 0 8px 8px;
+}
+
+.searchbar {
+    margin-top: 5px;
+    width: 100%;
+}
+
+.maintext {
+    text-align: center;
+}

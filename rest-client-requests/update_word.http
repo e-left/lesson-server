@@ -1,0 +1,7 @@
+PUT http://localhost:3000/api/updateAncientWord
+Content-Type: application/json
+{
+    "id": 1,
+    "title": "changed word2",
+    "content": "new content"
+}

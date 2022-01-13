@@ -1,0 +1,17 @@
+.content {
+  text-align: center;
+}
+
+.main {
+  border-style: solid;
+  border-color: lightskyblue;
+  background-color: lightcyan;
+  border-radius: 12px;
+  margin: 15px;
+  padding: 15px;
+}
+
+.toprow {
+  margin: 15px;
+  padding: 15px;
+}
