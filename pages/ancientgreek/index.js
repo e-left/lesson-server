@@ -23,8 +23,17 @@ export default function AncientGreek() {
     }, [page]);
 
     useEffect(() => {
-	console.log(data);
-        changeResWords(data.filter(word => word.title.includes(searchString)));
+        if (searchString !== "") {
+            fetch(process.env.api + "/getAncientWordsByQuery/" + searchString)
+                .then(res => res.json())
+                .then(data => {
+                    changeMoreWords(false);
+                    changeResWords(data.data);
+                })
+                .catch(() => { });
+        } else {
+            changeResWords(data);
+        }
     }, [data, searchString]);
 
     const backButton = page !== 0

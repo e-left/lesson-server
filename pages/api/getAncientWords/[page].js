@@ -20,6 +20,11 @@ export default async function handler(req, res) {
     const isMoreWords = toBeSkipped + toBeReturned < count ? true : false;
 
     const words = await prisma.ancient_words.findMany({
+        orderBy: [
+            {
+                title: "asc",
+            },
+        ],
         skip: toBeSkipped,
         take: toBeReturned
     });

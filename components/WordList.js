@@ -3,7 +3,7 @@ import WordElement from './WordElement';
 import styles from './WordList.module.css';
 
 function WordList({ data }) {
-    const renderedWords = data !== {}
+    const renderedWords = data && data !== {} 
         ?
         data.map(word =>
             <WordElement key={word.id.toString()} data={word} />

@@ -35,3 +35,6 @@ yarn-error.log*
 
 # prisma
 .env
+
+# next config
+/next.config.js
