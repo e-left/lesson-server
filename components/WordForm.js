@@ -202,7 +202,7 @@ function WordForm({ data, newWord }) {
         (
             <div key={idArr[i + vIndices[0]]}>
                 <label htmlFor={idArr[i + vIndices[0]]}>{labelArr[i + vIndices[0]]}</label>
-                <input type="text" className="form-control mb-3 mt-3" id={idArr[i + vIndices[0]]} autoComplete="off"></input>
+                <textarea className="form-control mb-3 mt-3" rows="6" id={idArr[i + vIndices[0]]} autoComplete="off"></textarea>
             </div>
         )
         );
@@ -213,7 +213,7 @@ function WordForm({ data, newWord }) {
         (
             <div key={idArr[i + oIndices[0]]}>
                 <label htmlFor={idArr[i + oIndices[0]]}>{labelArr[i + oIndices[0]]}</label>
-                <input type="text" className="form-control mb-3 mt-3" id={idArr[i + oIndices[0]]} autoComplete="off"></input>
+                <textarea className="form-control mb-3 mt-3" rows="6" id={idArr[i + oIndices[0]]} autoComplete="off"></textarea>
             </div>
         )
         );
@@ -224,7 +224,7 @@ function WordForm({ data, newWord }) {
         (
             <div key={idArr[i + eIndices[0]]}>
                 <label htmlFor={idArr[i + eIndices[0]]}>{labelArr[i + eIndices[0]]}</label>
-                <input type="text" className="form-control mb-3 mt-3" id={idArr[i + eIndices[0]]} autoComplete="off"></input>
+                <textarea className="form-control mb-3 mt-3" rows="6" id={idArr[i + eIndices[0]]} autoComplete="off"></textarea>
             </div>
         )
         );
@@ -235,7 +235,7 @@ function WordForm({ data, newWord }) {
         (
             <div key={idArr[i + aIndices[0]]}>
                 <label htmlFor={idArr[i + aIndices[0]]}>{labelArr[i + aIndices[0]]}</label>
-                <input type="text" className="form-control mb-3 mt-3" id={idArr[i + aIndices[0]]} autoComplete="off"></input>
+                <textarea className="form-control mb-3 mt-3" rows="6" id={idArr[i + aIndices[0]]} autoComplete="off"></textarea>
             </div>
         )
         );
@@ -253,16 +253,16 @@ function WordForm({ data, newWord }) {
                 <option value="rhma">Ρήμα</option>
                 <option value="ous">Ουσιαστικό</option>
                 <option value="epi">Επίθετο</option>
-                <option value="ap">Απαρέμφατο</option>
+                <option value="ap">Αντωνυμία</option>
             </select>
 
             {/* etumologia */}
             <label htmlFor="etumologia">Ετυμολογία</label>
-            <input type="text" className="form-control mb-3 mt-3" id="etumologia" autoComplete="off"></input>
+            <textarea className="form-control mb-3 mt-3" id="etumologia" rows="6" autoComplete="off"></textarea>
 
             {/* ermhneia */}
             <label htmlFor="title">Ερμηνεία</label>
-            <input type="text" className="form-control mb-3 mt-3" id="ermhneia" autoComplete="off"></input>
+            <textarea className="form-control mb-3 mt-3" id="ermhneia" rows="6" autoComplete="off"></textarea>
 
             {renderedJSX}
         </div>

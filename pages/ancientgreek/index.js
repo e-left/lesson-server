@@ -23,6 +23,7 @@ export default function AncientGreek() {
     }, [page]);
 
     useEffect(() => {
+	console.log(data);
         changeResWords(data.filter(word => word.title.includes(searchString)));
     }, [data, searchString]);
 

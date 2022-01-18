@@ -12,7 +12,7 @@ export default async function handler(req, res) {
 
     const toBeSkipped = page * resultsPerPage;
 
-    if (toBeSkipped >= count) {
+    if (toBeSkipped > count) {
         return res.status(500).json({ status: "error", data: { error: "More words requested than existing" } });
     }
 

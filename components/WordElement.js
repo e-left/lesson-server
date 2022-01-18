@@ -91,7 +91,7 @@ function WordElement({ data, initial }) {
         }
 
         if (data.category === "ap") {
-            categoryText = "Απαρέμφατο";
+            categoryText = "Αντωνυμία";
         }
 
         return <div className="container">
