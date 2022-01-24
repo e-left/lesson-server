@@ -1,6 +1,6 @@
 import React from 'react';
 import WordElement from './WordElement';
-import styles from './WordList.module.css';
+import styles from '../../styles/WordList.module.css';
 
 function WordList({ data }) {
     const renderedWords = data && data !== {} 

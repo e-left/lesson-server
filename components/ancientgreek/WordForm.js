@@ -1,8 +1,8 @@
 import React from "react";
 import Link from 'next/link';
-import styles from './WordForm.module.css';
+import styles from '../../styles/WordForm.module.css';
 import { useState, useEffect } from 'react';
-import { vIndices, oIndices, eIndices, aIndices, idArr, labelArr } from '../utils/constants';
+import { vIndices, oIndices, eIndices, aIndices, idArr, labelArr } from '../../utils/constants';
 
 function WordForm({ data, newWord }) {
     let title = "";
@@ -157,7 +157,7 @@ function WordForm({ data, newWord }) {
 
         if (newWord === "1") {
             // save new word
-            const response = await fetch('/api/addAncientWord', {
+            const response = await fetch('/api/ancientGreek/addAncientWord', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -173,9 +173,9 @@ function WordForm({ data, newWord }) {
             alert("Succesfully added word");
 
             // redirect to main page
-            window.location.href = "/ancientgreek";
+            window.location.href = "/ancientgreek/words";
         } else {
-            const response = await fetch('/api/updateAncientWord', {
+            const response = await fetch('/api/ancientGreek/updateAncientWord', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -191,7 +191,7 @@ function WordForm({ data, newWord }) {
             alert("Succesfully updated word");
 
             // redirect to main page
-            window.location.href = "/ancientgreek";
+            window.location.href = "/ancientgreek/words";
         }
     }
 
@@ -271,7 +271,7 @@ function WordForm({ data, newWord }) {
             <div className="row justify-content-around">
                 {/* cancel button */}
                 <div className="col-auto">
-                    <Link href="/ancientgreek" passHref>
+                    <Link href="/ancientgreek/words" passHref>
                         <button className="btn btn-danger btn-lg"><i className="bi bi-trash-fill"></i> Cancel</button>
                     </Link>
                 </div>

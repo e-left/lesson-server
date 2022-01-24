@@ -1,6 +1,6 @@
-import prisma from '../../utils/db';
+import prisma from '../../../utils/db';
 import { getSession } from 'next-auth/react';
-import { vIndices, oIndices, eIndices, aIndices, idArr } from '../../utils/constants';
+import { vIndices, oIndices, eIndices, aIndices, idArr } from '../../../utils/constants';
 
 export default async function handler(req, res) {
     // authenticated route
@@ -9,7 +9,7 @@ export default async function handler(req, res) {
         return res.status(401).send();
     }
 
-    const { id, title, category, etumologia, ermhneia, dataArr } = req.body;
+    const { title, category, etumologia, ermhneia, dataArr } = req.body;
     let dataObj = {};
 
     if (category === "rhma") {
@@ -35,51 +35,32 @@ export default async function handler(req, res) {
             dataObj[idArr[i]] = dataArr[i - aIndices[0]];
         }
     }
-    console.log(dataObj);
 
-    if (req.method !== "PUT") {
+    if (req.method !== "POST") {
         return res.status(400).json({ status: "error", data: { error: "Method not supported" } });
     }
 
-    if (id === "") {
-        return res.status(500).json({ status: "error", data: { error: "Id cannot be null" } });
+    if (title === "" || category === "" || etumologia === "" || ermhneia === "") {
+        return res.status(500).json({ status: "error", data: { error: "Fields cannot be null " } });
     }
 
-    if (title === "" && category === "") {
-        return res.status(500).json({ status: "error", data: { error: "All fields cannot be null" } });
-    }
-
-    const existingWord = await prisma.ancient_words.findFirst({
-        where: {
-            id: id
+    dataArr.forEach(item => {
+        if (item === "") {
+            return res.status(500).json({ status: "error", data: { error: "Fields cannot be null " } });
         }
     });
 
-    if (existingWord === null) {
-        return res.status(400).json({ status: "error", data: { error: "Word does not exist" } });
-    }
-
-    if (title === "") {
-        title = existingWord.title;
-    }
-
-    if (category === "") {
-        category = existingWord.category;
-    }
-
-    if (ermhneia === "") {
-        ermhneia = existingWord.ermhneia;
-    }
-
-    if (etumologia === "") {
-        etumologia = existingWord.etumologia;
-    }
-
-    await prisma.ancient_words.update({
+    const existingWord = await prisma.ancient_words.findFirst({
         where: {
-            id: id
-        },
+            title: title
+        }
+    });
 
+    if (existingWord !== null) {
+        return res.status(400).json({ status: "error", data: { error: "Word already exists" } });
+    }
+
+    const newWord = await prisma.ancient_words.create({
         data: {
             title: title,
             category: category,
@@ -89,5 +70,5 @@ export default async function handler(req, res) {
         }
     });
 
-    return res.status(204).send();
+    return res.status(201).json({ status: "success", data: { id: newWord.id, createdAt: newWord.createdAt } });
 }

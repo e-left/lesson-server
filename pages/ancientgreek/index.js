@@ -1,69 +1,47 @@
-import TopBar from "../../components/TopBar";
-import WordList from '../../components/WordList';
+import Link from "next/link";
 import Head from 'next/head';
-import { useState, useEffect } from "react";
+import styles from '../../styles/AncientGreek.module.css';
 import { getSession } from "next-auth/react";
-import styles from './index.module.css';
 
 export default function AncientGreek() {
-    let [searchString, updateSearchString] = useState("");
-    let [page, changePage] = useState(0);
-    let [data, changeData] = useState([])
-    let [resWords, changeResWords] = useState([]);
-    let [moreWords, changeMoreWords] = useState(false);
 
-    useEffect(() => {
-        fetch(process.env.api + "/getAncientWords/" + page)
-            .then(res => res.json())
-            .then(data => {
-                changeData(data.data);
-                changeMoreWords(data.moreWords);
-            })
-            .catch(() => { });
-    }, [page]);
+    return (
+        <>
+            <Head>
+                <title>Ancient Greek</title>
+            </Head>
+            <div className="container d-flex justify-content-center mt-5">
+                <div className="border border-primary rounded p-3">
+                    <div className="col justify-content-center">
+                        <div className="row p-3 m-3">
+                            <p className={styles.text}>Ancient Greek</p>
+                        </div>
 
-    useEffect(() => {
-        if (searchString !== "") {
-            fetch(process.env.api + "/getAncientWordsByQuery/" + searchString)
-                .then(res => res.json())
-                .then(data => {
-                    changeMoreWords(false);
-                    changeResWords(data.data);
-                })
-                .catch(() => { });
-        } else {
-            changeResWords(data);
-        }
-    }, [data, searchString]);
+                        {/* page list */}
+                        <div className="row p-3 m-3">
+                            <Link href="/ancientgreek/words" passHref>
+                                <button className="btn btn-outline-success btn-lg">Words</button>
+                            </Link>
+                        </div>
 
-    const backButton = page !== 0
-        ? <button type="button" className="btn btn-lg btn-secondary" onClick={() => changePage(page - 1)}><i className="bi bi-arrow-left"></i></button>
-        : <button type="button" className="btn btn-lg btn-secondary" onClick={() => changePage(page - 1)} disabled><i className="bi bi-arrow-left"></i></button>;
+                        <div className="row p-3 m-3">
+                            <Link href="/ancientgreek/translations" passHref>
+                                <button className="btn btn-outline-success btn-lg">Translations</button>
+                            </Link>
+                        </div>
 
-    const nextButton = moreWords
-        ? <button type="button" className="btn btn-lg btn-secondary" onClick={() => changePage(page + 1)}><i className="bi bi-arrow-right"></i></button>
-        : <button type="button" className="btn btn-lg btn-secondary" onClick={() => changePage(page + 1)} disabled><i className="bi bi-arrow-right"></i></button>;
-
-    return <>
-        <Head>
-            <title>Ancient Greek</title>
-        </Head>
-        <TopBar searchString={searchString} searchFunction={updateSearchString} />
-        <WordList data={resWords} />
-        <div className="container">
-            <div className={styles.buttonContainer}>
-                <div className="row justify-content-center align-items-center">
-                    <div className="col col-auto">
-                        {backButton}
-                    </div>
-                    <div className="col col-auto">
-                        {nextButton}
+                        {/* index page button */}
+                        <div className="row p-3 m-3">
+                            <Link href="/" passHref>
+                                <button className="btn btn-dark btn-lg"><i className="bi bi-door-open-fill"></i>Index</button>
+                            </Link>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-    </>;
+            </div>
+        </>
+    );
 }
 
 export async function getServerSideProps(context) {
@@ -82,18 +60,4 @@ export async function getServerSideProps(context) {
     return {
         props: {}
     };
-
-    // const res = await fetch(process.env.api + "/getAncientWords/" + page);
-    // if (!res.ok) {
-    //     return {
-    //         // props: { data: [] }
-    //         props: { data: [] }
-    //     }
-    // }
-
-    // const data = await res.json()
-
-    // return {
-    //     props: data
-    // };
 }

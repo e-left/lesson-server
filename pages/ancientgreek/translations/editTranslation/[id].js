@@ -1,14 +1,13 @@
-import WordForm from "../../components/WordForm";
+import TranslationForm from "../../../../components/ancientgreek/TranslationForm";
 import Head from 'next/head';
 import { getSession } from "next-auth/react";
 
-export default function AddWord() {
-
+export default function EditTranslation({ translation }) {
     return <>
         <Head>
-            <title>New word</title>
+            <title>Edit Translation</title>
         </Head>
-        <WordForm newWord="1" />
+        <TranslationForm data={translation} />
     </>
 }
 
@@ -24,7 +23,20 @@ export async function getServerSideProps(context) {
             }
         }
     }
+
+    const { id } = context.query;
+
+    const res = await fetch(process.env.api + "/ancientGreek/getAncientTranslationById/" + id.toString());
+    if (!res.ok) {
+        return {
+            props: {}
+        }
+    }
+
+    const data = await res.json()
+    const translation = data.data[0];
+
     return {
-        props: {},
+        props: { translation }
     };
 }

@@ -137,11 +137,11 @@ CREATE TABLE IF NOT EXISTS ancient_words (
 CREATE TABLE IF NOT EXISTS ancient_translations (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
+    title VARCHAR(50) NOT NULL,
     chapter VARCHAR(25) NOT NULL,
-    order_number INT NOT NULL,
-    original_text VARCHAR(250) NOT NULL,
-    translated_text VARCHAR(250) NOT NULL,
-    syntactic_analysis VARCHAR(300) NOT NULL
+    original_text MEDIUMTEXT NOT NULL,
+    translated_text MEDIUMTEXT NOT NULL,
+    syntactic_analysis MEDIUMTEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS ancient_book_exercises (

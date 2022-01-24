@@ -1,12 +1,12 @@
 import React from "react";
-import styles from './WordElement.module.css';
+import styles from '../../styles/WordElement.module.css';
 import Link from 'next/link';
 
 function WordElement({ data, initial }) {
 
     const returnDeleteCallback = (id) => {
         return async () => {
-            const response = await fetch('/api/deleteAncientWord', {
+            const response = await fetch('/api/ancientGreek/deleteAncientWord', {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -14,7 +14,7 @@ function WordElement({ data, initial }) {
                 body: JSON.stringify({ id }),
             });
 
-            if (response.status !== 204) {
+            if (response.status !== 200) {
                 const data = await response.json();
                 alert("Error: " + data.data.error);
                 return;
@@ -75,7 +75,7 @@ function WordElement({ data, initial }) {
         </div>;
 
     } else {
-        const editLink = "/ancientgreek/editWord/" + data.id.toString();
+        const editLink = "/ancientgreek/words/editWord/" + data.id.toString();
 
         let categoryText;
         if (data.category === "rhma") {

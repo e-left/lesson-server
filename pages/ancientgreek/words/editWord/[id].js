@@ -1,4 +1,4 @@
-import WordForm from "../../../components/WordForm";
+import WordForm from "../../../../components/ancientgreek/WordForm";
 import Head from 'next/head';
 import { getSession } from "next-auth/react";
 
@@ -26,7 +26,7 @@ export async function getServerSideProps(context) {
 
     const { id } = context.query;
 
-    const res = await fetch(process.env.api + "/getAncientWordById/" + id.toString());
+    const res = await fetch(process.env.api + "/ancientGreek/getAncientWordById/" + id.toString());
     if (!res.ok) {
         return {
             props: {}

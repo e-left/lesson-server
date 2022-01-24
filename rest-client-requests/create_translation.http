@@ -1,0 +1,10 @@
+POST http://localhost:3000/api/ancientGreek/addAncientTranslation
+Content-Type: application/json
+
+{
+    "title": "miam",
+    "chapter": "deuyero",
+    "original_text": "ena neo text",
+    "translated_text": "malakia trompas",
+    "syntactic_analysis": "onoim"
+}

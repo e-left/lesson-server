@@ -1,4 +1,4 @@
-import prisma from '../../utils/db';
+import prisma from '../../../utils/db';
 import { getSession } from 'next-auth/react';
 
 export default async function handler(req, res) {
@@ -18,21 +18,21 @@ export default async function handler(req, res) {
         return res.status(500).json({ status: "error", data: { error: "Id cannot be null" } });
     }
 
-    const existingWord = await prisma.ancient_words.findFirst({
+    const existingTranslation = await prisma.ancient_translations.findFirst({
         where: {
             id: id
         }
     });
 
-    if (existingWord === null) {
-        return res.status(400).json({ status: "error", data: { error: "Word does not exist" } });
+    if (existingTranslation === null) {
+        return res.status(400).json({ status: "error", data: { error: "Translation does not exist" } });
     }
 
-    const newWord = await prisma.ancient_words.delete({
+    await prisma.ancient_translations.delete({
         where: {
             id: id
         }
     });
 
-    return res.status(204).send();
+    return res.status(200).send();
 }
