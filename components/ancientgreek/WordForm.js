@@ -16,7 +16,7 @@ function WordForm({ data, newWord }) {
     let varr = new Array(78).fill("");
     let oarr = new Array(3).fill("");
     let earr = new Array(10).fill("");
-    let aarr = new Array(7).fill("");
+    let aarr = new Array(13).fill("");
 
     if (newWord !== "1" && !changedCategory) {
         title = data.title;

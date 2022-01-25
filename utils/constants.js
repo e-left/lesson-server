@@ -1,7 +1,7 @@
 const vIndices = [0, 77];
 const oIndices = [78, 80];
 const eIndices = [81, 90];
-const aIndices = [91, 97];
+const aIndices = [91, 103];
 
 const idArr = [
     "vommoriza",
@@ -104,8 +104,14 @@ const idArr = [
     "aenikosou",
     "aplithintikosar",
     "aplithintikosth",
-    "aplithintikosou"
-    // 91-97
+    "aplithintikosou",
+    "aenikosa",
+    "aenikosb",
+    "aenikosg",
+    "aplithintikosa",
+    "aplithintikosb",
+    "aplithintikosg"
+    // 91-103
 ];
 
 const labelArr = [
@@ -206,7 +212,13 @@ const labelArr = [
     "Ενικός Ουδετέρου",
     "Πληθυντικός Αρσενικού",
     "Πληθυντικός Θηλυκού",
-    "Πληθυντικός Ουδετέρου"
+    "Πληθυντικός Ουδετέρου",
+    "Ενικός α' προσώπου",
+    "Ενικός β' προσώπου",
+    "Ενικός γ' προσώπου",
+    "Πληθυντικός α' προσώπου",
+    "Πληθυντικός β' προσώπου",
+    "Πληθυντικός γ' προσώπου"
 ];
 
 const resultsPerPage = 20;

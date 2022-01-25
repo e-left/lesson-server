@@ -138,6 +138,12 @@ model ancient_words {
   aplithintikosar String?  @db.Text
   aplithintikosth String?  @db.Text
   aplithintikosou String?  @db.Text
+  aenikosa        String?  @db.Text
+  aenikosb        String?  @db.Text
+  aenikosg        String?  @db.Text
+  aplithintikosa  String?  @db.Text
+  aplithintikosb  String?  @db.Text
+  aplithintikosg  String?  @db.Text
 }
 
 model user {

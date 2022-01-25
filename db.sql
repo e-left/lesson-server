@@ -131,7 +131,14 @@ CREATE TABLE IF NOT EXISTS ancient_words (
     aenikosou TEXT,
     aplithintikosar TEXT,
     aplithintikosth TEXT,
-    aplithintikosou TEXT
+    aplithintikosou TEXT,
+    -- ADDED FIELDS
+    aenikosa TEXT,
+    aenikosb TEXT,
+    aenikosg TEXT,
+    aplithintikosa TEXT,
+    aplithintikosb TEXT,
+    aplithintikosg TEXT
 );
 
 CREATE TABLE IF NOT EXISTS ancient_translations (
