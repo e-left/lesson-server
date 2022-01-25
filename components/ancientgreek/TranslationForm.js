@@ -107,13 +107,13 @@ function TranslationForm({ data, newTranslation }) {
     return (
         <div className={styles.main}>
             <div className="form-group mb-4">
-                {/* title */}
-                <label htmlFor="title">Μετάφραση</label>
-                <input type="text" className="form-control mb-3 mt-3" id="title" placeholder="λέξη" autoComplete="off"></input>
-
                 {/* chapter */}
                 <label htmlFor="title">Κεφάλαιο</label>
-                <input type="text" className="form-control mb-3 mt-3" id="chapter" placeholder="λέξη" autoComplete="off"></input>
+                <input type="text" className="form-control mb-3 mt-3" id="chapter" placeholder="Κεφάλαιο" autoComplete="off"></input>
+
+                {/* title */}
+                <label htmlFor="title">Μετάφραση</label>
+                <input type="text" className="form-control mb-3 mt-3" id="title" placeholder="Τίτλος μετάφρασης" autoComplete="off"></input>
 
                 {/* original text editor */}
                 <label htmlFor="title">Πρωτότυπο</label>

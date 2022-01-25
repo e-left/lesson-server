@@ -29,17 +29,17 @@ function TranslationElement({ data, initial }) {
         return <div className="container">
             <div className={styles.toprow}>
                 <div className="row justify-content-around align-items-center">
-                    {/* title */}
-                    <div className="col col-2">
-                        <b>
-                            Title
-                        </b>
-                    </div>
-
                     {/* category */}
                     <div className="col col-1">
                         <b>
                             Chapter
+                        </b>
+                    </div>
+
+                    {/* title */}
+                    <div className="col col-2">
+                        <b>
+                            Title
                         </b>
                     </div>
 
@@ -79,16 +79,15 @@ function TranslationElement({ data, initial }) {
         return <div className="container">
             <div className={styles.main}>
                 <div className="row justify-content-around">
-                    {/* title */}
-                    <div className="col col-2">
-                        {data.title}
-                    </div>
-
                     {/* category */}
                     <div className="col col-1">
                         {data.chapter}
                     </div>
 
+                    {/* title */}
+                    <div className="col col-2">
+                        {data.title}
+                    </div>
 
                     {/* edit button */}
                     <div className="col col-1">
