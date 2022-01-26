@@ -32,6 +32,6 @@ export default async function handler(req, res) {
         take: toBeReturned
     });
 
-    return res.status(200).json({ status: "success", data: words, moreWords: isMoreWords });
+    return res.status(200).json({ status: "success", data: words, moreWords: isMoreWords, count });
 
 }
