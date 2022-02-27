@@ -7,30 +7,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model ancient_book_exercises {
-  id            Int      @id @default(autoincrement())
-  stamp_updated DateTime @default(now()) @db.Timestamp(0)
-  chapter       String   @db.VarChar(25)
-  ex_number     Int
-  solution_path String   @db.VarChar(128)
-}
-
-model ancient_old_ex {
-  id             Int      @id @default(autoincrement())
-  stamp_updated  DateTime @default(now()) @db.Timestamp(0)
-  ex_year        Int      @db.Year
-  ex_path        String   @db.VarChar(128)
-  solutions_path String   @db.VarChar(128)
-}
-
 model ancient_translations {
   id                 Int      @id @default(autoincrement())
+  userid             Int?
   stamp_updated      DateTime @default(now()) @db.Timestamp(0)
   title              String   @db.VarChar(50)
   chapter            String   @db.VarChar(25)
   original_text      String   @db.MediumText
   translated_text    String   @db.MediumText
   syntactic_analysis String   @db.MediumText
+  user               user?    @relation(fields: [userid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "ancient_translations_ibfk_1")
+
+  @@index([userid], map: "userid")
 }
 
 model ancient_words {
@@ -38,6 +26,7 @@ model ancient_words {
   stamp_updated   DateTime @default(now()) @db.Timestamp(0)
   title           String   @db.VarChar(100)
   category        String   @db.VarChar(15)
+  userid          Int?
   ermhneia        String   @db.Text
   etumologia      String   @db.Text
   vommoriza       String?  @db.Text
@@ -144,12 +133,92 @@ model ancient_words {
   aplithintikosa  String?  @db.Text
   aplithintikosb  String?  @db.Text
   aplithintikosg  String?  @db.Text
+  user            user?    @relation(fields: [userid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "ancient_words_ibfk_1")
+
+  @@index([userid], map: "userid")
 }
 
 model user {
-  id          Int     @id @default(autoincrement())
-  name        String  @db.VarChar(50)
-  email       String  @db.VarChar(100)
-  password    String  @db.VarChar(255)
-  permissions String? @db.VarChar(50)
+  id                   Int                    @id @default(autoincrement())
+  name                 String                 @db.VarChar(50)
+  email                String                 @db.VarChar(100)
+  password             String                 @db.VarChar(255)
+  permissions          String                 @db.VarChar(50)
+  ancient_translations ancient_translations[]
+  ancient_words        ancient_words[]
+  maths_basic_appendix maths_basic_appendix[]
+  maths_content        maths_content[]
+  maths_curriculum     maths_curriculum[]
+  maths_proofs         maths_proofs[]
+  maths_sos_theory     maths_sos_theory[]
+  maths_types          maths_types[]
+}
+
+model maths_basic_appendix {
+  id            Int      @id @default(autoincrement())
+  userid        Int?
+  stamp_updated DateTime @default(now()) @db.Timestamp(0)
+  title         String   @db.VarChar(50)
+  taksh         Int
+  main_content  String   @db.MediumText
+  user          user?    @relation(fields: [userid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "maths_basic_appendix_ibfk_1")
+
+  @@index([userid], map: "userid")
+}
+
+model maths_content {
+  id            Int      @id @default(autoincrement())
+  userid        Int?
+  stamp_updated DateTime @default(now()) @db.Timestamp(0)
+  kefalaio      String   @db.VarChar(25)
+  enothta       String   @db.VarChar(25)
+  taksh         Int
+  main_content  String   @db.MediumText
+  user          user?    @relation(fields: [userid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "maths_content_ibfk_1")
+
+  @@index([userid], map: "userid")
+}
+
+model maths_curriculum {
+  id            Int      @id @default(autoincrement())
+  userid        Int?
+  stamp_updated DateTime @default(now()) @db.Timestamp(0)
+  taksh         Int
+  main_content  String   @db.MediumText
+  user          user?    @relation(fields: [userid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "maths_curriculum_ibfk_1")
+
+  @@index([userid], map: "userid")
+}
+
+model maths_proofs {
+  id            Int      @id @default(autoincrement())
+  userid        Int?
+  stamp_updated DateTime @default(now()) @db.Timestamp(0)
+  taksh         Int
+  main_content  String   @db.MediumText
+  user          user?    @relation(fields: [userid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "maths_proofs_ibfk_1")
+
+  @@index([userid], map: "userid")
+}
+
+model maths_sos_theory {
+  id            Int      @id @default(autoincrement())
+  userid        Int?
+  stamp_updated DateTime @default(now()) @db.Timestamp(0)
+  taksh         Int
+  main_content  String   @db.MediumText
+  user          user?    @relation(fields: [userid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "maths_sos_theory_ibfk_1")
+
+  @@index([userid], map: "userid")
+}
+
+model maths_types {
+  id            Int      @id @default(autoincrement())
+  userid        Int?
+  stamp_updated DateTime @default(now()) @db.Timestamp(0)
+  taksh         Int
+  main_content  String   @db.MediumText
+  user          user?    @relation(fields: [userid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "maths_types_ibfk_1")
+
+  @@index([userid], map: "userid")
 }

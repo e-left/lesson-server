@@ -27,6 +27,8 @@ export default async function handler(req, res) {
         }
     });
 
-    return res.status(200).json({ status: "success", data: words });
+    const count = words.length;
+
+    return res.status(200).json({ status: "success", data: words, count: count });
 
 }

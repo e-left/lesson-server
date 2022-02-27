@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from '../../styles/TranslationElement.module.css';
 import Link from 'next/link';
 
 function TranslationElement({ data, initial }) {
+
+    let [userName, changeUserName] = useState("");
+
+    useEffect(async () => {
+        if (initial !== "1") {
+            const response = await fetch('/api/getUserNameById/' + data.userid.toString());
+            const jsonData = await response.json();
+            console.log(jsonData);
+            changeUserName(jsonData.name);
+        }
+    }, []);
 
     const returnDeleteCallback = (id) => {
         return async () => {
@@ -43,19 +54,14 @@ function TranslationElement({ data, initial }) {
                         </b>
                     </div>
 
-                    {/* content */}
-                    {/*
-                    <div className="col col-7">
+                    {/* user */}
+                    <div className="col col-1">
 
-                        <div className={styles.content}>
-                            <b>
-                                Content
-                            </b>
-
-                        </div>
+                        <b>
+                            User
+                        </b>
 
                     </div>
-                */}
 
                     {/* edit button */}
                     <div className="col col-1">
@@ -87,6 +93,11 @@ function TranslationElement({ data, initial }) {
                     {/* title */}
                     <div className="col col-2">
                         {data.title}
+                    </div>
+
+                    {/* username */}
+                    <div className="col col-1">
+                        {userName}
                     </div>
 
                     {/* edit button */}

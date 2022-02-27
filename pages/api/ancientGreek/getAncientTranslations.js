@@ -8,9 +8,9 @@ export default async function handler(req, res) {
         return res.status(400).json({ status: "error", data: { error: "Method not supported" } });
     }
 
-    const translations = await prisma.ancient_translations.findMany({
-    });
+    const translations = await prisma.ancient_translations.findMany({});
+    const count = translations.length;
 
-    return res.status(200).json({ status: "success", data: translations });
+    return res.status(200).json({ status: "success", data: translations, count: count });
 
 }

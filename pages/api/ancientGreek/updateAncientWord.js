@@ -84,6 +84,7 @@ export default async function handler(req, res) {
             category: category,
             ermhneia: ermhneia,
             etumologia: etumologia,
+            userid: session.user.id,
             ...dataObj
         }
     });

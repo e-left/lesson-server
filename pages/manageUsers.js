@@ -104,6 +104,10 @@ export default function ManageUsers() {
                                 User Permissions
                             </div>
 
+                            <div className="col">
+                                User Statistics
+                            </div>
+
                             <div className="col-auto mr-auto">
                                 Delete User
                             </div>
@@ -122,7 +126,14 @@ export default function ManageUsers() {
                                     {u.permissions}
                                 </div>
 
-                                <div className="col-auto mr-auto"><button className="btn btn-danger" onClick={createDeleteCallback(u.name)}><i className="bi bi-trash-fill"></i></button>
+                                <div className="col">
+                                    <Link href={"/userStatistics/" + u.id}>
+                                        <button className="btn btn-primary"><i className="bi bi-list-check"></i></button>
+                                    </Link>
+                                </div>
+
+                                <div className="col-auto mr-auto">
+                                    <button className="btn btn-danger" onClick={createDeleteCallback(u.name)}><i className="bi bi-trash-fill"></i></button>
                                 </div>
 
                             </div>

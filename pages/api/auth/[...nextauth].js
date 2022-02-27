@@ -14,7 +14,6 @@ export default NextAuth({
             },
             async authorize(credentials, _) {
                 // search db for user
-                // problem here
                 const user = await prisma.user.findFirst({
                     where: {
                         email: credentials.email,
@@ -36,7 +35,7 @@ export default NextAuth({
                 }
 
                 // return user
-                return { name: user.name, email: user.email, permissions: user.permissions };
+                return { name: user.name, email: user.email, permissions: user.permissions, id: user.id };
             }
         }),
     ],
@@ -46,6 +45,7 @@ export default NextAuth({
             // Persist the OAuth access_token to the token right after signin
             if (user) {
                 token.permissions = user.permissions;
+                token.id = user.id;
             }
             return token;
         },

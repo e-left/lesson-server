@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from '../../styles/WordElement.module.css';
 import Link from 'next/link';
 
 function WordElement({ data, initial }) {
+
+    let [userName, changeUserName] = useState("");
+
+    useEffect(async () => {
+        if (initial !== "1") {
+            const response = await fetch('/api/getUserNameById/' + data.userid.toString());
+            const jsonData = await response.json();
+            console.log(jsonData);
+            changeUserName(jsonData.name);
+        }
+    }, []);
 
     const returnDeleteCallback = (id) => {
         return async () => {
@@ -36,26 +47,21 @@ function WordElement({ data, initial }) {
                         </b>
                     </div>
 
+                    {/* user */}
+                    <div className="col col-1">
+
+                        <b>
+                            User
+                        </b>
+
+                    </div>
+
                     {/* category */}
                     <div className="col col-1">
                         <b>
                             Category
                         </b>
                     </div>
-
-                    {/* content */}
-                    {/*
-                    <div className="col col-7">
-
-                        <div className={styles.content}>
-                            <b>
-                                Content
-                            </b>
-
-                        </div>
-
-                    </div>
-                */}
 
                     {/* edit button */}
                     <div className="col col-1">
@@ -107,6 +113,10 @@ function WordElement({ data, initial }) {
                         {categoryText}
                     </div>
 
+                    {/* username */}
+                    <div className="col col-1">
+                        {userName}
+                    </div>
 
                     {/* edit button */}
                     <div className="col col-1">

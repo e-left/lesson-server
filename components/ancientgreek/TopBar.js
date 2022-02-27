@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../../styles/TopBar.module.css';
 import Link from 'next/link';
 
-function TopBar({ searchString, searchFunction, content, title, addLink }) {
+function TopBar({ searchString, searchFunction, content, title, addLink, count }) {
 
     const inputOnChange = () => {
         if (document.getElementById("searchbar").value !== searchString) {
@@ -34,6 +34,14 @@ function TopBar({ searchString, searchFunction, content, title, addLink }) {
                     {/* search bar */}
                     <div className="col-auto">
                         <input type="text" className={styles.searchbar} id="searchbar" onChange={inputOnChange} placeholder="Search anything!"></input>
+                    </div>
+
+                    {/* total count */}
+                    <div className="col-auto">
+                        <div className={styles.count}>
+                            
+                            <button type="button" className="btn btn-light btn-lg" disabled>Σύνολο: {count}</button>
+                        </div>
                     </div>
 
                     {/* logout */}

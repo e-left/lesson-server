@@ -62,7 +62,8 @@ export default async function handler(req, res) {
             chapter: chapter,
             original_text: original_text,
             translated_text: translated_text,
-            syntactic_analysis: syntactic_analysis
+            syntactic_analysis: syntactic_analysis,
+            userid: session.user.id
         }
     });
 

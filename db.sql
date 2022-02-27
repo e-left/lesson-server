@@ -14,6 +14,7 @@ CREATE TABLE IF NOT EXISTS ancient_words (
     stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
     title VARCHAR(100) NOT NULL,
     category VARCHAR(15) NOT NULL,
+    userid INT,
 
     ermhneia TEXT NOT NULL,
     etumologia TEXT NOT NULL,
@@ -138,31 +139,91 @@ CREATE TABLE IF NOT EXISTS ancient_words (
     aenikosg TEXT,
     aplithintikosa TEXT,
     aplithintikosb TEXT,
-    aplithintikosg TEXT
+    aplithintikosg TEXT,
+    FOREIGN KEY (userid) REFERENCES user(id)
 );
 
 CREATE TABLE IF NOT EXISTS ancient_translations (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userid INT,
     stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
     title VARCHAR(50) NOT NULL,
     chapter VARCHAR(25) NOT NULL,
     original_text MEDIUMTEXT NOT NULL,
     translated_text MEDIUMTEXT NOT NULL,
-    syntactic_analysis MEDIUMTEXT NOT NULL
+    syntactic_analysis MEDIUMTEXT NOT NULL,
+    FOREIGN KEY (userid) REFERENCES user(id)
 );
 
-CREATE TABLE IF NOT EXISTS ancient_book_exercises (
+-- CREATE TABLE IF NOT EXISTS ancient_book_exercises (
+--     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--     stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
+--     chapter VARCHAR(25) NOT NULL,
+--     ex_number INT NOT NULL,
+--     solution_path VARCHAR(128) NOT NULL
+-- );
+
+-- CREATE TABLE IF NOT EXISTS ancient_old_ex (
+--     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--     stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
+--     ex_year YEAR NOT NULL,
+--     ex_path VARCHAR(128) NOT NULL,    
+--     solutions_path VARCHAR(128) NOT NULL
+-- );
+
+CREATE TABLE IF NOT EXISTS maths_content (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userid INT,
     stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
-    chapter VARCHAR(25) NOT NULL,
-    ex_number INT NOT NULL,
-    solution_path VARCHAR(128) NOT NULL
+    kefalaio VARCHAR(25) NOT NULL,
+    enothta VARCHAR(25) NOT NULL,
+    taksh INT NOT NULL,
+    main_content MEDIUMTEXT NOT NULL,
+    FOREIGN KEY (userid) REFERENCES user(id)
 );
 
-CREATE TABLE IF NOT EXISTS ancient_old_ex (
+CREATE TABLE IF NOT EXISTS maths_sos_theory (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userid INT,
     stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
-    ex_year YEAR NOT NULL,
-    ex_path VARCHAR(128) NOT NULL,    
-    solutions_path VARCHAR(128) NOT NULL
+    taksh INT NOT NULL,
+    main_content MEDIUMTEXT NOT NULL,
+    FOREIGN KEY (userid) REFERENCES user(id)
+);
+
+CREATE TABLE IF NOT EXISTS maths_proofs (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userid INT,
+    stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
+    taksh INT NOT NULL,
+    main_content MEDIUMTEXT NOT NULL,
+    FOREIGN KEY (userid) REFERENCES user(id)
+);
+
+CREATE TABLE IF NOT EXISTS maths_types (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userid INT,
+    stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
+    taksh INT NOT NULL,
+    main_content MEDIUMTEXT NOT NULL,
+    FOREIGN KEY (userid) REFERENCES user(id)
+);
+
+CREATE TABLE IF NOT EXISTS maths_basic_appendix (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userid INT,
+    stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
+    title VARCHAR(50) NOT NULL,
+    taksh INT NOT NULL,
+    main_content MEDIUMTEXT NOT NULL,
+    FOREIGN KEY (userid) REFERENCES user(id)
+);
+
+CREATE TABLE IF NOT EXISTS maths_curriculum (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userid INT,
+    stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
+    taksh INT NOT NULL,
+    main_content MEDIUMTEXT NOT NULL,
+    FOREIGN KEY (userid) REFERENCES user(id)
 );

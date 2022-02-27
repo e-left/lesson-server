@@ -8,12 +8,14 @@ export default function Translations() {
     let [searchString, updateSearchString] = useState("");
     let [data, changeData] = useState([])
     let [resTranslations, changeResTranslations] = useState([]);
+    let [count, changeCount] = useState(0);
 
     useEffect(() => {
         fetch(process.env.api + "/ancientGreek/getAncientTranslations/")
             .then(res => res.json())
             .then(data => {
                 changeData(data.data);
+                changeCount(data.count);
             })
             .catch(() => { });
     }, []);
@@ -24,10 +26,12 @@ export default function Translations() {
                 .then(res => res.json())
                 .then(data => {
                     changeResTranslations(data.data);
+                    changeCount(data.count);
                 })
                 .catch(() => { });
         } else {
             changeResTranslations(data);
+            changeCount(data.length);
         }
     }, [data, searchString]);
 
@@ -36,7 +40,7 @@ export default function Translations() {
         <Head>
             <title>Ancient Greek Translations</title>
         </Head>
-        <TopBar searchString={searchString} searchFunction={updateSearchString} content="New translation" title="Ancient Greek Translations" addLink="/ancientgreek/translations/addtranslation" />
+        <TopBar searchString={searchString} count={count} searchFunction={updateSearchString} content="New translation" title="Ancient Greek Translations" addLink="/ancientgreek/translations/addtranslation" />
         <TranslationList data={resTranslations} />
     </>;
 }

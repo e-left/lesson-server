@@ -11,6 +11,7 @@ export default function Words() {
     let [data, changeData] = useState([])
     let [resWords, changeResWords] = useState([]);
     let [moreWords, changeMoreWords] = useState(false);
+    let [count, changeCount] = useState(0);
 
     useEffect(() => {
         fetch(process.env.api + "/ancientGreek/getAncientWords/" + page)
@@ -18,6 +19,7 @@ export default function Words() {
             .then(data => {
                 changeData(data.data);
                 changeMoreWords(data.moreWords);
+                changeCount(data.count);
             })
             .catch(() => { });
     }, [page]);
@@ -29,10 +31,12 @@ export default function Words() {
                 .then(data => {
                     changeMoreWords(false);
                     changeResWords(data.data);
+                    changeCount(data.count);
                 })
                 .catch(() => { });
         } else {
             changeResWords(data);
+            changeCount(data.length);
         }
     }, [data, searchString]);
 
@@ -48,7 +52,7 @@ export default function Words() {
         <Head>
             <title>Ancient Greek Words</title>
         </Head>
-        <TopBar searchString={searchString} searchFunction={updateSearchString} content="New word" title="Ancient Greek Words" addLink="/ancientgreek/words/addword" />
+        <TopBar searchString={searchString} searchFunction={updateSearchString} count={count} content="New word" title="Ancient Greek Words" addLink="/ancientgreek/words/addword" />
         <WordList data={resWords} />
         <div className="container">
             <div className={styles.buttonContainer}>
