@@ -31,7 +31,8 @@ export default async function handler(req, res) {
     const newProof = await prisma.maths_proofs.create({
         data: {
             taksh: taksh,
-            main_content: main_content
+            main_content: main_content,
+            userid: session.user.id
         }
     });
 

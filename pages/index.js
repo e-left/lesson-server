@@ -35,6 +35,12 @@ export default function Home() {
                                 </Link>
                             </div>
 
+                            <div className="row p-3 m-3">
+                                <Link href="/maths" passHref>
+                                    <button className="btn btn-outline-success btn-lg">Maths</button>
+                                </Link>
+                            </div>
+
                             {/* if admin render user management */}
                             {adminButton}
 

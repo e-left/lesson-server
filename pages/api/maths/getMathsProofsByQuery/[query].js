@@ -22,5 +22,5 @@ export default async function handler(req, res) {
         }
     });
 
-    return res.status(200).json({ status: "success", data: proofs });
+    return res.status(200).json({ status: "success", data: proofs, count: proofs.length });
 }

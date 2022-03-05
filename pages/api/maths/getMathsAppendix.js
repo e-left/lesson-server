@@ -10,6 +10,6 @@ export default async function handler(req, res) {
 
     const appendix = await prisma.maths_basic_appendix.findMany({});
 
-    return res.status(200).json({ status: "success", data: appendix });
+    return res.status(200).json({ status: "success", data: appendix, count: appendix.length });
 
 }

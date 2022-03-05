@@ -108,7 +108,7 @@ function TranslationForm({ data, newTranslation }) {
         <div className={styles.main}>
             <div className="form-group mb-4">
                 {/* chapter */}
-                <label htmlFor="title">Κεφάλαιο</label>
+                <label htmlFor="chapter">Κεφάλαιο</label>
                 <input type="text" className="form-control mb-3 mt-3" id="chapter" placeholder="Κεφάλαιο" autoComplete="off"></input>
 
                 {/* title */}
@@ -116,7 +116,7 @@ function TranslationForm({ data, newTranslation }) {
                 <input type="text" className="form-control mb-3 mt-3" id="title" placeholder="Τίτλος μετάφρασης" autoComplete="off"></input>
 
                 {/* original text editor */}
-                <label htmlFor="title">Πρωτότυπο</label>
+                <label htmlFor="originalText">Πρωτότυπο</label>
                 <div className="mb-3 mt-3">
                     <div className={styles.editorBc}>
                         {originalTextJSX}
@@ -124,7 +124,7 @@ function TranslationForm({ data, newTranslation }) {
                 </div>
 
                 {/* translated text editor */}
-                <label htmlFor="title">Μετάφραση</label>
+                <label htmlFor="translatedText">Μετάφραση</label>
                 <div className="mb-3 mt-3">
                     <div className={styles.editorBc}>
                         {translatedTextJSX}
@@ -132,7 +132,7 @@ function TranslationForm({ data, newTranslation }) {
                 </div>
 
                 {/* syntactic analysis editor */}
-                <label htmlFor="title">Συντακτική ανάλυση</label>
+                <label htmlFor="syntacticAnalysis">Συντακτική ανάλυση</label>
                 <div className="mb-3 mt-3">
                     <div className={styles.editorBc}>
                         {syntacticAnalysisJSX}

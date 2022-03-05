@@ -32,7 +32,8 @@ export default async function handler(req, res) {
         data: {
             title: title,
             taksh: taksh,
-            main_content: main_content
+            main_content: main_content,
+            userid: session.user.id
         }
     });
 

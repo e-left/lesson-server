@@ -10,6 +10,6 @@ export default async function handler(req, res) {
 
     const theory = await prisma.maths_sos_theory.findMany({});
 
-    return res.status(200).json({ status: "success", data: theory });
+    return res.status(200).json({ status: "success", data: theory, count: theory.length });
 
 }

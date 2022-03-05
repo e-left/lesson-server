@@ -52,7 +52,8 @@ export default async function handler(req, res) {
         data: {
             taksh: taksh,
             title: title,
-            main_content: main_content
+            main_content: main_content,
+            userid: session.user.id
         }
     });
 

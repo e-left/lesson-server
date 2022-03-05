@@ -10,6 +10,6 @@ export default async function handler(req, res) {
 
     const types = await prisma.maths_types.findMany({});
 
-    return res.status(200).json({ status: "success", data: types });
+    return res.status(200).json({ status: "success", data: types, count: types.length });
 
 }

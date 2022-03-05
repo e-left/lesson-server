@@ -28,10 +28,11 @@ export default async function handler(req, res) {
         return res.status(400).json({ status: "error", data: { error: "Type already exists" } });
     }
 
-    const newType = await prisma.maths_type.create({
+    const newType = await prisma.maths_types.create({
         data: {
             taksh: taksh,
-            main_content: main_content
+            main_content: main_content,
+            userid: session.user.id
         }
     });
 

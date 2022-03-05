@@ -261,7 +261,7 @@ function WordForm({ data, newWord }) {
             <textarea className="form-control mb-3 mt-3" id="etumologia" rows="6" autoComplete="off"></textarea>
 
             {/* ermhneia */}
-            <label htmlFor="title">Ερμηνεία</label>
+            <label htmlFor="ermhneia">Ερμηνεία</label>
             <textarea className="form-control mb-3 mt-3" id="ermhneia" rows="6" autoComplete="off"></textarea>
 
             {renderedJSX}

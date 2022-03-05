@@ -10,6 +10,6 @@ export default async function handler(req, res) {
 
     const proof = await prisma.maths_proofs.findMany({});
 
-    return res.status(200).json({ status: "success", data: proof });
+    return res.status(200).json({ status: "success", data: proof, count: proof.length });
 
 }

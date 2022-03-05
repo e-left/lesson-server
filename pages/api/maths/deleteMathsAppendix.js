@@ -24,7 +24,7 @@ export default async function handler(req, res) {
         }
     });
 
-    if (maths_basic_appendix === null) {
+    if (existingAppendix === null) {
         return res.status(400).json({ status: "error", data: { error: "Appendix does not exist" } });
     }
 

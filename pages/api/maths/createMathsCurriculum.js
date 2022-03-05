@@ -31,7 +31,8 @@ export default async function handler(req, res) {
     const newCurriculum = await prisma.maths_curriculum.create({
         data: {
             taksh: taksh,
-            main_content: main_content
+            main_content: main_content,
+            userid: session.user.id
         }
     });
 
