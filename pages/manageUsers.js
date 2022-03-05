@@ -148,6 +148,7 @@ export default function ManageUsers() {
                             <select name="permissions" className="form-control" id="permissions">
                                 <option value="all">All</option>
                                 <option value="ancientgreek">Ancient Greek</option>
+                                <option value="maths">Maths</option>
                             </select>
                             <label htmlFor="password">Password:</label>
                             <input type="password" className="form-control" id="password" autoComplete="off"></input>
