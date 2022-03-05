@@ -2,12 +2,12 @@ import Head from 'next/head';
 import { getSession } from "next-auth/react";
 import AppendixForm from "../../../../components/maths/AppendixForm";
 
-export default function EditAppendix({ Appendix }) {
+export default function EditAppendix({ appendix }) {
     return <>
         <Head>
             <title>Edit Appendix</title>
         </Head>
-        <AppendixForm data={type} />
+        <AppendixForm data={appendix} />
     </>
 }
 
