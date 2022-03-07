@@ -8,7 +8,7 @@ export default async function handler(req, res) {
         return res.status(401).send();
     }
 
-    const { id, title, chapter, original_text, translated_text, syntactic_analysis } = req.body;
+    const { id, taksh, title, chapter, original_text, translated_text, syntactic_analysis } = req.body;
 
     if (req.method !== "PUT") {
         return res.status(400).json({ status: "error", data: { error: "Method not supported" } });
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
         return res.status(400).json({ status: "error", data: { error: "Translation does not exist" } });
     }
 
-    if (title === "" && chapter === "" && original_text === "" && translated_text === "" && syntactic_analysis === "") {
+    if (taksh === "" && title === "" && chapter === "" && original_text === "" && translated_text === "" && syntactic_analysis === "") {
         return res.status(500).json({ status: "error", data: { error: "Fields cannot be null " } });
     }
 
@@ -38,6 +38,10 @@ export default async function handler(req, res) {
 
     if (chapter === "") {
         chapter = existingTranslation.chapter;
+    }
+
+    if (taksh === "") {
+        taksh = existingTranslation.taksh;
     }
 
     if (original_text === "") {
@@ -59,6 +63,7 @@ export default async function handler(req, res) {
 
         data: {
             title: title,
+            taksh: taksh,
             chapter: chapter,
             original_text: original_text,
             translated_text: translated_text,

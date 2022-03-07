@@ -8,6 +8,7 @@ function TranslationForm({ data, newTranslation }) {
     let title = "";
     let id = 0;
     let chapter = "";
+    let taksi = 0;
 
     let originalText = "";
     let changeOriginalText = (text) => {
@@ -30,6 +31,7 @@ function TranslationForm({ data, newTranslation }) {
         title = data.title;
         id = data.id;
         chapter = data.chapter;
+        taksi = data.taksh;
         originalText = data.original_text;
         translatedText = data.translated_text;
         syntacticAnalysis = data.syntactic_analysis;
@@ -51,6 +53,7 @@ function TranslationForm({ data, newTranslation }) {
         if (newTranslation !== "1") {
             document.getElementById("title").value = title;
             document.getElementById("chapter").value = chapter;
+            document.getElementById("taksi").value = taksi;
         }
     }, []);
 
@@ -58,6 +61,7 @@ function TranslationForm({ data, newTranslation }) {
         // get fields
         title = document.getElementById("title").value.trim();
         chapter = document.getElementById("chapter").value.trim();
+        taksi = parseInt(document.getElementById("taksi").value);
 
         if (title === "") {
             alert("Fields cannot be empty!");
@@ -71,7 +75,7 @@ function TranslationForm({ data, newTranslation }) {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ title, chapter, original_text: originalText, translated_text: translatedText, syntactic_analysis: syntacticAnalysis }),
+                body: JSON.stringify({ title, chapter, original_text: originalText, taksh: parseInt(taksi), translated_text: translatedText, syntactic_analysis: syntacticAnalysis }),
             });
 
             const data = await response.json();
@@ -89,7 +93,7 @@ function TranslationForm({ data, newTranslation }) {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ id, title, chapter, original_text: originalText, translated_text: translatedText, syntactic_analysis: syntacticAnalysis }),
+                body: JSON.stringify({ id, title, chapter, taksh: parseInt(taksi), original_text: originalText, translated_text: translatedText, syntactic_analysis: syntacticAnalysis }),
             });
 
             if (response.status !== 204) {
@@ -114,6 +118,18 @@ function TranslationForm({ data, newTranslation }) {
                 {/* title */}
                 <label htmlFor="title">Μετάφραση</label>
                 <input type="text" className="form-control mb-3 mt-3" id="title" placeholder="Τίτλος μετάφρασης" autoComplete="off"></input>
+
+                {/* taksi */}
+                <label htmlFor="taksi">Τάξη</label>
+                <select className="form-control mb-3 mt-3" name="taksi" id="taksi">
+                    <option value="1">Α' Γυμνασίου</option>
+                    <option value="2">Β' Γυμνασίου</option>
+                    <option value="3">Γ' Γυμνασίου</option>
+                    <option value="4">Α' Λυκείου</option>
+                    <option value="5">Β' Λυκείου</option>
+                    <option value="6">Γ' Λυκείου ΓΕΛ</option>
+                    <option value="7">Γ' Λυκείου ΕΠΑΛ</option>
+                </select>
 
                 {/* original text editor */}
                 <label htmlFor="originalText">Πρωτότυπο</label>

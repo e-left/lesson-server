@@ -8,13 +8,13 @@ export default async function handler(req, res) {
         return res.status(401).send();
     }
 
-    const { title, chapter, original_text, translated_text, syntactic_analysis } = req.body;
+    const { taksh, title, chapter, original_text, translated_text, syntactic_analysis } = req.body;
 
     if (req.method !== "POST") {
         return res.status(400).json({ status: "error", data: { error: "Method not supported" } });
     }
 
-    if (title === "" || chapter === "" || original_text === "" || translated_text === "" || syntactic_analysis === "") {
+    if (taksh === "" | title === "" || chapter === "" || original_text === "" || translated_text === "" || syntactic_analysis === "") {
         return res.status(500).json({ status: "error", data: { error: "Fields cannot be null " } });
     }
 
@@ -31,6 +31,7 @@ export default async function handler(req, res) {
     const newTranslation = await prisma.ancient_translations.create({
         data: {
             title: title,
+            taksh: taksh,
             chapter: chapter,
             original_text: original_text,
             translated_text: translated_text,

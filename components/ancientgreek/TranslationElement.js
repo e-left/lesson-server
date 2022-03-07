@@ -47,8 +47,15 @@ function TranslationElement({ data, initial }) {
                         </b>
                     </div>
 
+                    {/* taksi */}
+                    <div className="col col-1">
+                        <b>
+                            Τάξη
+                        </b>
+                    </div>
+
                     {/* title */}
-                    <div className="col col-2">
+                    <div className="col col-1">
                         <b>
                             Title
                         </b>
@@ -82,6 +89,37 @@ function TranslationElement({ data, initial }) {
 
     } else {
         const editLink = "/ancientgreek/translations/editTranslation/" + data.id.toString();
+        let taksi = "";
+        switch (data.taksh) {
+            case 1 :{
+                taksi = "Α' Γυμνασίου";
+                break
+            }
+            case 2 :{
+                taksi = "Β' Γυμνασίου";
+                break
+            }
+            case 3 :{
+                taksi = "Γ' Γυμνασίου";
+                break
+            }
+            case 4 :{
+                taksi = "Α' Λυκείου";
+                break
+            }
+            case 5 :{
+                taksi = "Β' Λυκείου";
+                break
+            }
+            case 6 :{
+                taksi = "Γ' Λυκείου ΓΕΛ";
+                break
+            }
+            case 7 :{
+                taksi = "Γ' Λυκείου ΕΠΑΛ";
+                break
+            }
+        }
         return <div className="container">
             <div className={styles.main}>
                 <div className="row justify-content-around">
@@ -90,8 +128,13 @@ function TranslationElement({ data, initial }) {
                         {data.chapter}
                     </div>
 
+                    {/* taksh */}
+                    <div className="col col-1">
+                        {taksi}
+                    </div>
+
                     {/* title */}
-                    <div className="col col-2">
+                    <div className="col col-1">
                         {data.title}
                     </div>
 
