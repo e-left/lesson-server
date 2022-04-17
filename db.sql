@@ -229,12 +229,30 @@ CREATE TABLE IF NOT EXISTS maths_curriculum (
     FOREIGN KEY (userid) REFERENCES user(id)
 );
 
-CREATE TABLE IF NOT EXISTS chem_element (
+CREATE TABLE IF NOT EXISTS chem_basic_appendix (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userid INT,
+    stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
+    title VARCHAR(50) NOT NULL,
+    taksh INT NOT NULL,
+    main_content MEDIUMTEXT NOT NULL,
+    FOREIGN KEY (userid) REFERENCES user(id)
+);
+
+CREATE TABLE IF NOT EXISTS chem_types (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     userid INT,
     stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
     taksh INT NOT NULL,
-    typos VARCHAR(30) NOT NULL,
+    main_content MEDIUMTEXT NOT NULL,
+    FOREIGN KEY (userid) REFERENCES user(id)
+);
+
+CREATE TABLE IF NOT EXISTS chem_curriculum (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userid INT,
+    stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
+    taksh INT NOT NULL,
     main_content MEDIUMTEXT NOT NULL,
     FOREIGN KEY (userid) REFERENCES user(id)
 );
@@ -258,6 +276,7 @@ CREATE TABLE IF NOT EXISTS chem_book_chapters (
     FOREIGN KEY (userid) REFERENCES user(id)
 );
 
+-- stopped here
 CREATE TABLE IF NOT EXISTS chem_book_exercises (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     userid INT,
@@ -270,30 +289,12 @@ CREATE TABLE IF NOT EXISTS chem_book_exercises (
     FOREIGN KEY (userid) REFERENCES user(id)
 );
 
-CREATE TABLE IF NOT EXISTS chem_types (
+CREATE TABLE IF NOT EXISTS chem_element (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     userid INT,
     stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
     taksh INT NOT NULL,
-    main_content MEDIUMTEXT NOT NULL,
-    FOREIGN KEY (userid) REFERENCES user(id)
-);
-
-CREATE TABLE IF NOT EXISTS chem_basic_appendix (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    userid INT,
-    stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
-    title VARCHAR(50) NOT NULL,
-    taksh INT NOT NULL,
-    main_content MEDIUMTEXT NOT NULL,
-    FOREIGN KEY (userid) REFERENCES user(id)
-);
-
-CREATE TABLE IF NOT EXISTS chem_curriculum (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    userid INT,
-    stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
-    taksh INT NOT NULL,
+    typos VARCHAR(30) NOT NULL,
     main_content MEDIUMTEXT NOT NULL,
     FOREIGN KEY (userid) REFERENCES user(id)
 );

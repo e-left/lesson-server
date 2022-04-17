@@ -147,6 +147,13 @@ model user {
   permissions          String                 @db.VarChar(50)
   ancient_translations ancient_translations[]
   ancient_words        ancient_words[]
+  chem_basic_appendix  chem_basic_appendix[]
+  chem_book_chapters   chem_book_chapters[]
+  chem_book_exercises  chem_book_exercises[]
+  chem_curriculum      chem_curriculum[]
+  chem_element         chem_element[]
+  chem_sos_theory      chem_sos_theory[]
+  chem_types           chem_types[]
   maths_basic_appendix maths_basic_appendix[]
   maths_content        maths_content[]
   maths_curriculum     maths_curriculum[]
@@ -220,6 +227,89 @@ model maths_types {
   taksh         Int
   main_content  String   @db.MediumText
   user          user?    @relation(fields: [userid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "maths_types_ibfk_1")
+
+  @@index([userid], map: "userid")
+}
+
+model chem_basic_appendix {
+  id            Int      @id @default(autoincrement())
+  userid        Int?
+  stamp_updated DateTime @default(now()) @db.Timestamp(0)
+  title         String   @db.VarChar(50)
+  taksh         Int
+  main_content  String   @db.MediumText
+  user          user?    @relation(fields: [userid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "chem_basic_appendix_ibfk_1")
+
+  @@index([userid], map: "userid")
+}
+
+model chem_book_chapters {
+  id            Int      @id @default(autoincrement())
+  userid        Int?
+  stamp_updated DateTime @default(now()) @db.Timestamp(0)
+  title         String   @db.VarChar(50)
+  taksh         Int
+  main_content  String   @db.MediumText
+  user          user?    @relation(fields: [userid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "chem_book_chapters_ibfk_1")
+
+  @@index([userid], map: "userid")
+}
+
+model chem_book_exercises {
+  id            Int      @id @default(autoincrement())
+  userid        Int?
+  stamp_updated DateTime @default(now()) @db.Timestamp(0)
+  title         String   @db.VarChar(50)
+  taksh         Int
+  exNumber      Int
+  pageNumber    Int
+  main_content  String   @db.MediumText
+  user          user?    @relation(fields: [userid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "chem_book_exercises_ibfk_1")
+
+  @@index([userid], map: "userid")
+}
+
+model chem_curriculum {
+  id            Int      @id @default(autoincrement())
+  userid        Int?
+  stamp_updated DateTime @default(now()) @db.Timestamp(0)
+  taksh         Int
+  main_content  String   @db.MediumText
+  user          user?    @relation(fields: [userid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "chem_curriculum_ibfk_1")
+
+  @@index([userid], map: "userid")
+}
+
+model chem_element {
+  id            Int      @id @default(autoincrement())
+  userid        Int?
+  stamp_updated DateTime @default(now()) @db.Timestamp(0)
+  taksh         Int
+  typos         String   @db.VarChar(30)
+  main_content  String   @db.MediumText
+  user          user?    @relation(fields: [userid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "chem_element_ibfk_1")
+
+  @@index([userid], map: "userid")
+}
+
+model chem_sos_theory {
+  id            Int      @id @default(autoincrement())
+  userid        Int?
+  stamp_updated DateTime @default(now()) @db.Timestamp(0)
+  taksh         Int
+  main_content  String   @db.MediumText
+  user          user?    @relation(fields: [userid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "chem_sos_theory_ibfk_1")
+
+  @@index([userid], map: "userid")
+}
+
+model chem_types {
+  id            Int      @id @default(autoincrement())
+  userid        Int?
+  stamp_updated DateTime @default(now()) @db.Timestamp(0)
+  taksh         Int
+  main_content  String   @db.MediumText
+  user          user?    @relation(fields: [userid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "chem_types_ibfk_1")
 
   @@index([userid], map: "userid")
 }
