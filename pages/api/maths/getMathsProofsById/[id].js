@@ -1,6 +1,8 @@
 import prisma from '../../../../utils/db';
+import cors from "../../../../utils/corsHandler";
 
 export default async function handler(req, res) {
+    await cors(req, res);
     const {id} = req.query;
 
     if (req.method !== "GET") {
