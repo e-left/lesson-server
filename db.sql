@@ -276,7 +276,6 @@ CREATE TABLE IF NOT EXISTS chem_book_chapters (
     FOREIGN KEY (userid) REFERENCES user(id)
 );
 
--- stopped here
 CREATE TABLE IF NOT EXISTS chem_book_exercises (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     userid INT,
@@ -292,8 +291,8 @@ CREATE TABLE IF NOT EXISTS chem_book_exercises (
 CREATE TABLE IF NOT EXISTS chem_element (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     userid INT,
+    title VARCHAR(50) NOT NULL,
     stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
-    taksh INT NOT NULL,
     typos VARCHAR(30) NOT NULL,
     main_content MEDIUMTEXT NOT NULL,
     FOREIGN KEY (userid) REFERENCES user(id)
