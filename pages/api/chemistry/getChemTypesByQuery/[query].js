@@ -16,7 +16,7 @@ export default async function handler(req, res) {
 
     const types = await prisma.chem_types.findMany({
         where: {
-            title : {
+            main_content : {
                 contains: query,
             }
         }

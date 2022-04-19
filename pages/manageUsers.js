@@ -80,7 +80,6 @@ export default function ManageUsers() {
         window.location.reload(false);
     }
 
-    // TODO: make it all look good
     return (
         <div>
             <Head>
@@ -149,6 +148,7 @@ export default function ManageUsers() {
                                 <option value="all">All</option>
                                 <option value="ancientgreek">Ancient Greek</option>
                                 <option value="maths">Maths</option>
+                                <option value="chem">Chemistry</option>
                             </select>
                             <label htmlFor="password">Password:</label>
                             <input type="password" className="form-control" id="password" autoComplete="off"></input>
@@ -156,7 +156,6 @@ export default function ManageUsers() {
 
 
                         <div className="row p-3 m-3">
-                            {/* TODO: check if columns here */}
                             <button className="btn btn-success btn-lg" onClick={submitUser}><i className="bi bi-plus-fill"></i> New User</button>
                         </div>
                         <div className="row p-3 m-3">

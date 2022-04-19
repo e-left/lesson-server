@@ -16,7 +16,7 @@ export default async function handler(req, res) {
 
     const sos_theory = await prisma.chem_sos_theory.findMany({
         where: {
-            title : {
+            main_content : {
                 contains: query,
             }
         }

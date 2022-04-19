@@ -30,5 +30,9 @@ export default async function handler(req, res) {
 
     const translationCount = translations.length;
 
-    return res.status(200).json({ status: "success", wordCount: wordCount, translationCount: translationCount });
+    return res.status(200).json({
+        status: "success",
+        wordCount: wordCount,
+        translationCount: translationCount
+    });
 }

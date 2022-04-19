@@ -283,8 +283,8 @@ model chem_curriculum {
 model chem_element {
   id            Int      @id @default(autoincrement())
   userid        Int?
+  title         String   @db.VarChar(50)
   stamp_updated DateTime @default(now()) @db.Timestamp(0)
-  taksh         Int
   typos         String   @db.VarChar(30)
   main_content  String   @db.MediumText
   user          user?    @relation(fields: [userid], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "chem_element_ibfk_1")

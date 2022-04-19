@@ -16,7 +16,7 @@ export default async function handler(req, res) {
 
     const curriculum = await prisma.chem_curriculum.findMany({
         where: {
-            title : {
+            main_content : {
                 contains: query,
             }
         }
