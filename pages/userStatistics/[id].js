@@ -16,6 +16,19 @@ export default function UserStatistics() {
     // user statistics
     let [wordCount, changeWordCount] = useState(0);
     let [translationCount, changeTranslationCount] = useState(0);
+    let [mathsTypesCount, changeMathsTypesCount] = useState(0); 
+    let [mathsTheoryCount, changeMathsTheoryCount] = useState(0); 
+    let [mathsProofsCount, changeMathsProofsCount] = useState(0); 
+    let [mathsCurriculumCount, changeMathsCurriculumCount] = useState(0); 
+    let [mathsContentCount, changeMathsContentCount] = useState(0); 
+    let [mathsAppendixCount, changeMathsAppendixCount] = useState(0); 
+    let [chemTypesCount, changeChemTypesCount] = useState(0); 
+    let [chemTheoryCount, changeChemTheoryCount] = useState(0); 
+    let [chemBookChaptersCount, changeChemBookChaptersCount] = useState(0); 
+    let [chemCurriculumCount, changeChemCurriculumCount] = useState(0); 
+    let [chemBookExercisesCount, changeChemBookExercisesCount] = useState(0); 
+    let [chemAppendixCount, changeChemAppendixCount] = useState(0); 
+    let [chemElementCount, changeChemElementCount] = useState(0); 
 
     useEffect(async () => {
         const nameResponse = await fetch("/api/getUserNameById/" + id.toString());
@@ -28,6 +41,19 @@ export default function UserStatistics() {
 
         changeWordCount(statsJSON.wordCount);
         changeTranslationCount(statsJSON.translationCount);
+        changeMathsTypesCount(statsJSON.mathsTypesCount);
+        changeMathsTheoryCount(statsJSON.mathsTheoryCount);
+        changeMathsProofsCount(statsJSON.mathsProofsCount);
+        changeMathsCurriculumCount(statsJSON.mathsCurriculumCount);
+        changeMathsContentCount(statsJSON.mathsContentCount);
+        changeMathsAppendixCount(statsJSON.mathsAppendixCount);
+        changeChemTypesCount(statsJSON.chemTypesCount);
+        changeChemTheoryCount(statsJSON.chemTheoryCount);
+        changeChemBookChaptersCount(statsJSON.chemBookChaptersCount);
+        changeChemCurriculumCount(statsJSON.chemCurriculumCount);
+        changeChemBookExercisesCount(statsJSON.chemBookExercisesCount);
+        changeChemAppendixCount(statsJSON.chemAppendixCount);
+        changeChemElementCount(statsJSON.chemElementCount);
     }, []);
 
     return <>
@@ -49,6 +75,71 @@ export default function UserStatistics() {
                     {/* translations */}
                     <div className="row p-3 m-3">
                         <button className="btn btn-secondary btn-lg" disable>Σύνολο μεταφράσεων αρχαίων: {translationCount}</button>
+                    </div>
+
+                    {/* maths types */}
+                    <div className="row p-3 m-3">
+                        <button className="btn btn-secondary btn-lg" disable>Σύνολο τυπολογίων μαθηματικών: {mathsTypesCount}</button>
+                    </div>
+
+                    {/* maths theory */}
+                    <div className="row p-3 m-3">
+                        <button className="btn btn-secondary btn-lg" disable>Σύνολο θεωρίας μαθηματικών: {mathsTheoryCount}</button>
+                    </div>
+
+                    {/* maths proofs */}
+                    <div className="row p-3 m-3">
+                        <button className="btn btn-secondary btn-lg" disable>Σύνολο αποδείξεων μαθηματικών: {mathsProofsCount}</button>
+                    </div>
+
+                    {/* maths curriculum */}
+                    <div className="row p-3 m-3">
+                        <button className="btn btn-secondary btn-lg" disable>Σύνολο ύλης μαθηματικών: {mathsCurriculumCount}</button>
+                    </div>
+
+                    {/* maths content */}
+                    <div className="row p-3 m-3">
+                        <button className="btn btn-secondary btn-lg" disable>Σύνολο περιεχομένου μαθηματικών: {mathsContentCount}</button>
+                    </div>
+
+                    {/* maths appendix */}
+                    <div className="row p-3 m-3">
+                        <button className="btn btn-secondary btn-lg" disable>Σύνολο ευρετήριων μαθηματικών: {mathsAppendixCount}</button>
+                    </div>
+
+                    {/* chemistry types */}
+                    <div className="row p-3 m-3">
+                        <button className="btn btn-secondary btn-lg" disable>Σύνολο τυπολογίων χημείας: {chemTypesCount}</button>
+                    </div>
+
+                    {/* chemistry theory */}
+                    <div className="row p-3 m-3">
+                        <button className="btn btn-secondary btn-lg" disable>Σύνολο θεωρίας χημείας: {chemTheoryCount}</button>
+                    </div>
+
+                    {/* chemistry book chapters */}
+                    <div className="row p-3 m-3">
+                        <button className="btn btn-secondary btn-lg" disable>Σύνολο κεφαλαίων βιβλίου χημείας: {chemBookChaptersCount}</button>
+                    </div>
+
+                    {/* chemistry curriculum */}
+                    <div className="row p-3 m-3">
+                        <button className="btn btn-secondary btn-lg" disable>Σύνολο ύλης χημείας: {chemCurriculumCount}</button>
+                    </div>
+
+                    {/* chemistry book exercises */}
+                    <div className="row p-3 m-3">
+                        <button className="btn btn-secondary btn-lg" disable>Σύνολο ασκήσεων βιβλίου χημείας: {chemBookExercisesCount}</button>
+                    </div>
+
+                    {/* chemistry appendix */}
+                    <div className="row p-3 m-3">
+                        <button className="btn btn-secondary btn-lg" disable>Σύνολο ευρετήριων χημείας: {chemAppendixCount}</button>
+                    </div>
+
+                    {/* chemistry element */}
+                    <div className="row p-3 m-3">
+                        <button className="btn btn-secondary btn-lg" disable>Σύνολο ενώσεων χημείας: {chemElementCount}</button>
                     </div>
 
                     {/* return button */}
