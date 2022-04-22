@@ -8,13 +8,13 @@ export default async function handler(req, res) {
         return res.status(401).send();
     }
 
-    const { title, taksh, main_content, typos } = req.body;
+    const { title, main_content, typos } = req.body;
 
     if (req.method !== "POST") {
         return res.status(400).json({ status: "error", data: { error: "Method not supported" } });
     }
 
-    if (title === "" || main_content === "" || taksh === "" || typos === "") {
+    if (title === "" || main_content === "" || typos === "") {
         return res.status(500).json({ status: "error", data: { error: "Fields cannot be null" } });
     }
 
@@ -31,7 +31,6 @@ export default async function handler(req, res) {
     const newElement = await prisma.chem_element.create({
         data: {
             title: title,
-            taksh: taksh,
             typos: typos,
             main_content: main_content,
             userid: session.user.id

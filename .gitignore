@@ -38,3 +38,7 @@ yarn-error.log*
 
 # next config
 next.config.js
+
+# chemistry data
+chemistryData/Άρθρα*
+chemistryData/exported*
