@@ -1,7 +1,8 @@
-import prisma from '../../../../utils/db';
 import cors from "../../../../utils/corsHandler";
+import { PrismaClient } from "@prisma/client";
 
 export default async function handler(req, res) {
+    const prisma = new PrismaClient();
     await cors(req, res);
 
     const { category } = req.query;

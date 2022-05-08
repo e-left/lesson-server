@@ -1,7 +1,9 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcrypt';
-import prisma from '../../../utils/db';
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 export default NextAuth({
     secret: process.env.JWT_SECRET,
