@@ -4,16 +4,6 @@ import Link from 'next/link';
 
 function TranslationElement({ data, initial }) {
 
-    let [userName, changeUserName] = useState("");
-
-    useEffect(async () => {
-        if (initial !== "1") {
-            const response = await fetch('/api/getUserNameById/' + data.userid.toString());
-            const jsonData = await response.json();
-            changeUserName(jsonData.name);
-        }
-    }, []);
-
     const returnDeleteCallback = (id) => {
         return async () => {
             const response = await fetch('/api/ancientGreek/deleteAncientTranslation', {
@@ -39,7 +29,7 @@ function TranslationElement({ data, initial }) {
         return <div className="container">
             <div className={styles.toprow}>
                 <div className="row justify-content-around align-items-center">
-                    {/* category */}
+                    {/* chapter */}
                     <div className="col col-1">
                         <b>
                             Chapter
@@ -54,19 +44,10 @@ function TranslationElement({ data, initial }) {
                     </div>
 
                     {/* title */}
-                    <div className="col col-1">
+                    <div className="col col-2">
                         <b>
                             Title
                         </b>
-                    </div>
-
-                    {/* user */}
-                    <div className="col col-1">
-
-                        <b>
-                            User
-                        </b>
-
                     </div>
 
                     {/* edit button */}
@@ -122,7 +103,7 @@ function TranslationElement({ data, initial }) {
         return <div className="container">
             <div className={styles.main}>
                 <div className="row justify-content-around">
-                    {/* category */}
+                    {/* chapter */}
                     <div className="col col-1">
                         {data.chapter}
                     </div>
@@ -133,13 +114,8 @@ function TranslationElement({ data, initial }) {
                     </div>
 
                     {/* title */}
-                    <div className="col col-1">
+                    <div className="col col-2">
                         {data.title}
-                    </div>
-
-                    {/* username */}
-                    <div className="col col-1">
-                        {userName}
                     </div>
 
                     {/* edit button */}

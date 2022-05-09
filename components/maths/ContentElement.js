@@ -4,16 +4,6 @@ import Link from 'next/link';
 
 function ContentElement({ data, initial }) {
 
-    let [userName, changeUserName] = useState("");
-
-    useEffect(async () => {
-        if (initial !== "1") {
-            const response = await fetch('/api/getUserNameById/' + data.userid.toString());
-            const jsonData = await response.json();
-            changeUserName(jsonData.name);
-        }
-    }, []);
-
     const returnDeleteCallback = (id) => {
         return async () => {
             const response = await fetch('/api/maths/deleteMathsContent', {
@@ -40,7 +30,7 @@ function ContentElement({ data, initial }) {
             <div className={styles.toprow}>
                 <div className="row justify-content-around align-items-center">
                     {/* enothta */}
-                    <div className="col col-1">
+                    <div className="col col-2">
                         <b>
                             Ενότητα
                         </b>
@@ -58,15 +48,6 @@ function ContentElement({ data, initial }) {
                         <b>
                             Τάξη
                         </b>
-                    </div>
-
-                    {/* user */}
-                    <div className="col col-1">
-
-                        <b>
-                            User
-                        </b>
-
                     </div>
 
                     {/* edit button */}
@@ -123,7 +104,7 @@ function ContentElement({ data, initial }) {
             <div className={styles.main}>
                 <div className="row justify-content-around">
                     {/* enothta */}
-                    <div className="col col-1">
+                    <div className="col col-2">
                         {data.enothta}
                     </div>
 
@@ -135,11 +116,6 @@ function ContentElement({ data, initial }) {
                     {/* taksh */}
                     <div className="col col-1">
                         {taksi}
-                    </div>
-
-                    {/* username */}
-                    <div className="col col-1">
-                        {userName}
                     </div>
 
                     {/* edit button */}

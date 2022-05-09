@@ -4,16 +4,6 @@ import Link from 'next/link';
 
 function CurriculumElement({ data, initial }) {
 
-    let [userName, changeUserName] = useState("");
-
-    useEffect(async () => {
-        if (initial !== "1") {
-            const response = await fetch('/api/getUserNameById/' + data.userid.toString());
-            const jsonData = await response.json();
-            changeUserName(jsonData.name);
-        }
-    }, []);
-
     const returnDeleteCallback = (id) => {
         return async () => {
             const response = await fetch('/api/maths/deleteMathsCurriculum', {
@@ -40,19 +30,10 @@ function CurriculumElement({ data, initial }) {
             <div className={styles.toprow}>
                 <div className="row justify-content-around align-items-center">
                     {/* taksi */}
-                    <div className="col col-3">
+                    <div className="col col-4">
                         <b>
                             Τάξη
                         </b>
-                    </div>
-
-                    {/* user */}
-                    <div className="col col-1">
-
-                        <b>
-                            User
-                        </b>
-
                     </div>
 
                     {/* edit button */}
@@ -109,13 +90,8 @@ function CurriculumElement({ data, initial }) {
             <div className={styles.main}>
                 <div className="row justify-content-around">
                     {/* taksh */}
-                    <div className="col col-3">
+                    <div className="col col-4">
                         {taksi}
-                    </div>
-
-                    {/* username */}
-                    <div className="col col-1">
-                        {userName}
                     </div>
 
                     {/* edit button */}

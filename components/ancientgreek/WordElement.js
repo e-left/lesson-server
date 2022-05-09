@@ -3,17 +3,6 @@ import styles from '../../styles/WordElement.module.css';
 import Link from 'next/link';
 
 function WordElement({ data, initial }) {
-
-    let [userName, changeUserName] = useState("");
-
-    useEffect(async () => {
-        if (initial !== "1") {
-            const response = await fetch('/api/getUserNameById/' + data.userid.toString());
-            const jsonData = await response.json();
-            changeUserName(jsonData.name);
-        }
-    }, []);
-
     const returnDeleteCallback = (id) => {
         return async () => {
             const response = await fetch('/api/ancientGreek/deleteAncientWord', {
@@ -46,17 +35,8 @@ function WordElement({ data, initial }) {
                         </b>
                     </div>
 
-                    {/* user */}
-                    <div className="col col-1">
-
-                        <b>
-                            User
-                        </b>
-
-                    </div>
-
                     {/* category */}
-                    <div className="col col-1">
+                    <div className="col col-2">
                         <b>
                             Category
                         </b>
@@ -108,13 +88,8 @@ function WordElement({ data, initial }) {
                     </div>
 
                     {/* category */}
-                    <div className="col col-1">
+                    <div className="col col-2">
                         {categoryText}
-                    </div>
-
-                    {/* username */}
-                    <div className="col col-1">
-                        {userName}
                     </div>
 
                     {/* edit button */}

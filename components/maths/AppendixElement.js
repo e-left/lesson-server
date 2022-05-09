@@ -4,16 +4,6 @@ import Link from 'next/link';
 
 function AppendixElement({ data, initial }) {
 
-    let [userName, changeUserName] = useState("");
-
-    useEffect(async () => {
-        if (initial !== "1") {
-            const response = await fetch('/api/getUserNameById/' + data.userid.toString());
-            const jsonData = await response.json();
-            changeUserName(jsonData.name);
-        }
-    }, []);
-
     const returnDeleteCallback = (id) => {
         return async () => {
             const response = await fetch('/api/maths/deleteMathsAppendix', {
@@ -40,7 +30,7 @@ function AppendixElement({ data, initial }) {
             <div className={styles.toprow}>
                 <div className="row justify-content-around align-items-center">
                     {/* titlos */}
-                    <div className="col col-1">
+                    <div className="col col-2">
                         <b>
                             Τίτλος
                         </b>
@@ -51,15 +41,6 @@ function AppendixElement({ data, initial }) {
                         <b>
                             Τάξη
                         </b>
-                    </div>
-
-                    {/* user */}
-                    <div className="col col-1">
-
-                        <b>
-                            User
-                        </b>
-
                     </div>
 
                     {/* edit button */}
@@ -116,18 +97,13 @@ function AppendixElement({ data, initial }) {
             <div className={styles.main}>
                 <div className="row justify-content-around">
                     {/* titlos */}
-                    <div className="col col-1">
+                    <div className="col col-2">
                         {data.title}
                     </div>
 
                     {/* taksh */}
                     <div className="col col-2">
                         {taksi}
-                    </div>
-
-                    {/* username */}
-                    <div className="col col-1">
-                        {userName}
                     </div>
 
                     {/* edit button */}

@@ -4,16 +4,6 @@ import Link from 'next/link';
 
 function ElementElement({ data, initial }) {
 
-    let [userName, changeUserName] = useState("");
-
-    useEffect(async () => {
-        if (initial !== "1") {
-            const response = await fetch('/api/getUserNameById/' + data.userid.toString());
-            const jsonData = await response.json();
-            changeUserName(jsonData.name);
-        }
-    }, []);
-
     const returnDeleteCallback = (id) => {
         return async () => {
             const response = await fetch('/api/chemistry/deleteChemElement', {
@@ -47,19 +37,10 @@ function ElementElement({ data, initial }) {
                     </div>
 
                     {/* type */}
-                    <div className="col col-1">
+                    <div className="col col-2">
                         <b>
                             Τύπος
                         </b>
-                    </div>
-
-                    {/* user */}
-                    <div className="col col-1">
-
-                        <b>
-                            User
-                        </b>
-
                     </div>
 
                     {/* edit button */}
@@ -103,13 +84,8 @@ function ElementElement({ data, initial }) {
                     </div>
 
                     {/* typos */}
-                    <div className="col col-1">
+                    <div className="col col-2">
                         {typos}
-                    </div>
-
-                    {/* username */}
-                    <div className="col col-1">
-                        {userName}
                     </div>
 
                     {/* edit button */}
