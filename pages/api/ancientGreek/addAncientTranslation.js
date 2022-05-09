@@ -1,8 +1,7 @@
+import prisma from '../../../utils/db';
 import { getSession } from 'next-auth/react';
-import { PrismaClient } from "@prisma/client";
 
 export default async function handler(req, res) {
-    const prisma = new PrismaClient();
     // authenticated route
     const session = await getSession({ req });
     if (!session || (session.user.permissions !== "all" && session.user.permissions !== "ancientgreek")) {
