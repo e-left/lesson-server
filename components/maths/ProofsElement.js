@@ -10,7 +10,6 @@ function ProofsElement({ data, initial }) {
         if (initial !== "1") {
             const response = await fetch('/api/getUserNameById/' + data.userid.toString());
             const jsonData = await response.json();
-            console.log(jsonData);
             changeUserName(jsonData.name);
         }
     }, []);

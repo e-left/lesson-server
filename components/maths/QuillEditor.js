@@ -29,13 +29,29 @@ class QuillEditor extends React.Component {
     );
   }
 
+  imageHandler() {
+    var range = this.quill.getSelection();
+    var value = prompt('Paste Image URL here');
+    if (value) {
+      this.quill.insertEmbed(range.index, 'image', value, Quill.sources.USER);
+    }
+  }
+
   render() {
     return (
       <ReactQuill
         ref={this.reactQuill}
         modules={{
           formula: true,
-          toolbar: [["video", "image", "bold", "italic", "underline", "strike", "formula"]]
+          toolbar: {
+            container: [
+              ["video", "image", "bold", "italic", "underline", "strike", "formula"],
+              [{ 'script': 'sub' }, { 'script': 'super' }]
+            ],
+            handlers: {
+              image: this.imageHandler
+            }
+          },
         }}
         // theme={"snow"}
         placeholder={"Compose an epic ..."}
