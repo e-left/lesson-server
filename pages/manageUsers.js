@@ -149,6 +149,7 @@ export default function ManageUsers() {
                                 <option value="ancientgreek">Ancient Greek</option>
                                 <option value="maths">Maths</option>
                                 <option value="chem">Chemistry</option>
+                                <option value="physics">Physics</option>
                             </select>
                             <label htmlFor="password">Password:</label>
                             <input type="password" className="form-control" id="password" autoComplete="off"></input>

@@ -147,6 +147,60 @@ export default async function handler(req, res) {
 
     const chemElementCount = chemElement.length;
 
+    // chemistry types
+    const physicsTypes = await prisma.physics_types.findMany({
+        where: {
+            userid: parseInt(id)
+        },
+    });
+
+    const physicsTypesCount = physicsTypes.length;
+
+    // physicsistry theory
+    const physicsTheory = await prisma.physics_sos_theory.findMany({
+        where: {
+            userid: parseInt(id)
+        },
+    });
+
+    const physicsTheoryCount = physicsTheory.length;
+
+    // physicsistry book chapters
+    const physicsBookChapters = await prisma.physics_book_chapters.findMany({
+        where: {
+            userid: parseInt(id)
+        },
+    });
+
+    const physicsBookChaptersCount = physicsBookChapters.length;
+
+    // physicsistry curriculum
+    const physicsCurriculum = await prisma.physics_curriculum.findMany({
+        where: {
+            userid: parseInt(id)
+        },
+    });
+
+    const physicsCurriculumCount = physicsCurriculum.length;
+
+    // physicsistry book exercises
+    const physicsBookExercises = await prisma.physics_book_exercises.findMany({
+        where: {
+            userid: parseInt(id)
+        },
+    });
+
+    const physicsBookExercisesCount = physicsBookExercises.length;
+
+    // physicsistry appendix
+    const physicsAppendix = await prisma.physics_basic_appendix.findMany({
+        where: {
+            userid: parseInt(id)
+        },
+    });
+
+    const physicsAppendixCount = physicsAppendix.length;
+
     // return data
     return res.status(200).json({
         status: "success",
@@ -165,5 +219,11 @@ export default async function handler(req, res) {
         chemBookExercisesCount: chemBookExercisesCount,
         chemAppendixCount: chemAppendixCount,
         chemElementCount: chemElementCount,
+        physicsTypesCount: physicsTypesCount,
+        physicsTheoryCount: physicsTheoryCount,
+        physicsBookChaptersCount: physicsBookChaptersCount,
+        physicsCurriculumCount: physicsCurriculumCount,
+        physicsBookExercisesCount: physicsBookExercisesCount,
+        physicsAppendixCount: physicsAppendixCount,
     });
 }

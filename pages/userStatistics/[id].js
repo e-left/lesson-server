@@ -29,6 +29,12 @@ export default function UserStatistics() {
     let [chemBookExercisesCount, changeChemBookExercisesCount] = useState(0); 
     let [chemAppendixCount, changeChemAppendixCount] = useState(0); 
     let [chemElementCount, changeChemElementCount] = useState(0); 
+    let [physicsTypesCount, changePhysicsTypesCount] = useState(0); 
+    let [physicsTheoryCount, changePhysicsTheoryCount] = useState(0); 
+    let [physicsBookChaptersCount, changePhysicsBookChaptersCount] = useState(0); 
+    let [physicsCurriculumCount, changePhysicsCurriculumCount] = useState(0); 
+    let [physicsBookExercisesCount, changePhysicsBookExercisesCount] = useState(0); 
+    let [physicsAppendixCount, changePhysicsAppendixCount] = useState(0); 
 
     useEffect(async () => {
         const nameResponse = await fetch("/api/getUserNameById/" + id.toString());
@@ -54,6 +60,12 @@ export default function UserStatistics() {
         changeChemBookExercisesCount(statsJSON.chemBookExercisesCount);
         changeChemAppendixCount(statsJSON.chemAppendixCount);
         changeChemElementCount(statsJSON.chemElementCount);
+        changePhysicsTypesCount(statsJSON.physicsTypesCount);
+        changePhysicsTheoryCount(statsJSON.physicsTheoryCount);
+        changePhysicsBookChaptersCount(statsJSON.physicsBookChaptersCount);
+        changePhysicsCurriculumCount(statsJSON.physicsCurriculumCount);
+        changePhysicsBookExercisesCount(statsJSON.physicsBookExercisesCount);
+        changePhysicsAppendixCount(statsJSON.physicsAppendixCount);
     }, []);
 
     return <>
@@ -140,6 +152,36 @@ export default function UserStatistics() {
                     {/* chemistry element */}
                     <div className="row p-3 m-3">
                         <button className="btn btn-secondary btn-lg" disable>Σύνολο ενώσεων χημείας: {chemElementCount}</button>
+                    </div>
+
+                    {/* physics types */}
+                    <div className="row p-3 m-3">
+                        <button className="btn btn-secondary btn-lg" disable>Σύνολο τυπολογίων φυσικής: {physicsTypesCount}</button>
+                    </div>
+
+                    {/* physics theory */}
+                    <div className="row p-3 m-3">
+                        <button className="btn btn-secondary btn-lg" disable>Σύνολο θεωρίας φυσικής: {physicsTheoryCount}</button>
+                    </div>
+
+                    {/* physics book chapters */}
+                    <div className="row p-3 m-3">
+                        <button className="btn btn-secondary btn-lg" disable>Σύνολο κεφαλαίων βιβλίου φυσικής: {physicsBookChaptersCount}</button>
+                    </div>
+
+                    {/* physics curriculum */}
+                    <div className="row p-3 m-3">
+                        <button className="btn btn-secondary btn-lg" disable>Σύνολο ύλης φυσικής: {physicsCurriculumCount}</button>
+                    </div>
+
+                    {/* physics book exercises */}
+                    <div className="row p-3 m-3">
+                        <button className="btn btn-secondary btn-lg" disable>Σύνολο ασκήσεων βιβλίου φυσικής: {physicsBookExercisesCount}</button>
+                    </div>
+
+                    {/* physics appendix */}
+                    <div className="row p-3 m-3">
+                        <button className="btn btn-secondary btn-lg" disable>Σύνολο ευρετήριων φυσικής: {physicsAppendixCount}</button>
                     </div>
 
                     {/* return button */}
