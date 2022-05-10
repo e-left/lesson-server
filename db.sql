@@ -297,3 +297,62 @@ CREATE TABLE IF NOT EXISTS chem_element (
     main_content MEDIUMTEXT NOT NULL,
     FOREIGN KEY (userid) REFERENCES user(id)
 );
+
+CREATE TABLE IF NOT EXISTS physics_basic_appendix (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userid INT,
+    stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
+    title VARCHAR(50) NOT NULL,
+    taksh INT NOT NULL,
+    main_content MEDIUMTEXT NOT NULL,
+    FOREIGN KEY (userid) REFERENCES user(id)
+);
+
+CREATE TABLE IF NOT EXISTS physics_types (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userid INT,
+    stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
+    taksh INT NOT NULL,
+    main_content MEDIUMTEXT NOT NULL,
+    FOREIGN KEY (userid) REFERENCES user(id)
+);
+
+CREATE TABLE IF NOT EXISTS physics_curriculum (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userid INT,
+    stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
+    taksh INT NOT NULL,
+    main_content MEDIUMTEXT NOT NULL,
+    FOREIGN KEY (userid) REFERENCES user(id)
+);
+
+CREATE TABLE IF NOT EXISTS physics_sos_theory (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userid INT,
+    stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
+    taksh INT NOT NULL,
+    main_content MEDIUMTEXT NOT NULL,
+    FOREIGN KEY (userid) REFERENCES user(id)
+);
+
+CREATE TABLE IF NOT EXISTS physics_book_chapters (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userid INT,
+    stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
+    title VARCHAR(50) NOT NULL,
+    taksh INT NOT NULL,
+    main_content MEDIUMTEXT NOT NULL,
+    FOREIGN KEY (userid) REFERENCES user(id)
+);
+
+CREATE TABLE IF NOT EXISTS physics_book_exercises (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    userid INT,
+    stamp_updated TIMESTAMP DEFAULT NOW() ON UPDATE NOW() NOT NULL,
+    title VARCHAR(50) NOT NULL,
+    taksh INT NOT NULL,
+    exNumber INT NOT NULL,
+    pageNumber INT NOT NULL,
+    main_content MEDIUMTEXT NOT NULL,
+    FOREIGN KEY (userid) REFERENCES user(id)
+);
