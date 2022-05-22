@@ -54,6 +54,12 @@ export default function Maths() {
                             </Link>
                         </div>
 
+                        <div className="row p-3 m-3">
+                            <Link href="/maths/LaTexConverter" passHref>
+                                <button className="btn btn-outline-success btn-lg">LaTexConverter</button>
+                            </Link>
+                        </div>
+
                         {/* index page button */}
                         <div className="row p-3 m-3">
                             <Link href="/" passHref>
