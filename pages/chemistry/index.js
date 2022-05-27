@@ -60,6 +60,12 @@ export default function Chem() {
                             </Link>
                         </div>
 
+                        <div className="row p-3 m-3">
+                            <Link href="/chemistry/quotes" passHref>
+                                <button className="btn btn-outline-success btn-lg">Quotes</button>
+                            </Link>
+                        </div>
+
                         {/* index page button */}
                         <div className="row p-3 m-3">
                             <Link href="/" passHref>

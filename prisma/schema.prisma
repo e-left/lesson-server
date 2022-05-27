@@ -390,3 +390,11 @@ model physics_types {
 
   @@index([userid], map: "userid")
 }
+
+model quotes {
+  id            Int      @id @default(autoincrement())
+  lesson        String   @unique(map: "lesson") @db.VarChar(50)
+  content       String   @db.VarChar(200)
+  author        String   @db.VarChar(50)
+  stamp_updated DateTime @default(now()) @db.Timestamp(0)
+}
