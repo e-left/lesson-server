@@ -18,15 +18,15 @@ export default async function handler(req, res) {
         return res.status(500).json({ status: "error", data: { error: "Fields cannot be null " } });
     }
 
-    const existingTranslation = await prisma.ancient_translations.findFirst({
-        where: {
-            title: title
-        }
-    });
+    // const existingTranslation = await prisma.ancient_translations.findFirst({
+    //     where: {
+    //         title: title
+    //     }
+    // });
 
-    if (existingTranslation !== null) {
-        return res.status(400).json({ status: "error", data: { error: "Translation already exists" } });
-    }
+    // if (existingTranslation !== null) {
+    //     return res.status(400).json({ status: "error", data: { error: "Translation already exists" } });
+    // }
 
     const newTranslation = await prisma.ancient_translations.create({
         data: {
