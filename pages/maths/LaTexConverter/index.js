@@ -6,9 +6,7 @@ export default function LaTexConverter() {
     const onConvertClick = () => {
         let content = document.getElementById("src").value;
 
-        // perform the editing here
-        // limit problem 
-        // replace \underset{A}{\mathop{\lim }} with \lim_{A}
+        // perform the editing here // limit problem // replace \underset{A}{\mathop{\lim }} with \lim_{A}
         // regex to get source string: /\\underset{[^}]*}{\\mathop{\\lim }}/
         // afterwards remove 17 characters from the end and 10 from the beginning to get A
         // finally construct the sequence
@@ -16,6 +14,12 @@ export default function LaTexConverter() {
         content = content.replace(limitRegex, (matched) => { return `\\lim_{${matched.slice(10, -17)}}`; });
         let commaRegex = /\\,/g;
         content = content.replace(commaRegex, ",");
+	content = content.replaceAll("\\left", "");
+	content = content.replaceAll("\\right", "");
+	content = content.replaceAll("\\!", "!");
+	content = content.replaceAll("\\{", "{");
+	content = content.replaceAll("\\}", "}");
+	content = content.replaceAll("\\cdots", "...");
 
         document.getElementById("dst").value = content;
     }

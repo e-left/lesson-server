@@ -50,7 +50,6 @@ export default async function handler(req, res) {
         },
 
         data: {
-            taksh: taksh,
             title: title,
             typos: typos,
             main_content: main_content,
