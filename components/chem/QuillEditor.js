@@ -46,7 +46,9 @@ class QuillEditor extends React.Component {
           toolbar: {
             container: [
               ["video", "image", "bold", "italic", "underline", "strike", "formula"],
-              [{ 'script': 'sub' }, { 'script': 'super' }]
+              [{ 'script': 'sub' }, { 'script': 'super' }],
+              [{ 'color': [] }, { 'background': [] }],
+              [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
             ],
             handlers: {
               image: this.imageHandler

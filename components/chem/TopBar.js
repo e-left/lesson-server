@@ -23,10 +23,12 @@ function TopBar({ searchString, searchFunction, content, title, addLink, count }
 
                     {/* new word button */}
                     <div className="col-auto">
-                        <Link href={addLink}>
-                            <button type="button" className="btn btn-success btn-lg">
-                                <i className="bi bi-plus"></i>{content}
-                            </button>
+                        <Link href={addLink} passHref>
+                            <a target="_blank">
+                                <button type="button" className="btn btn-success btn-lg">
+                                    <i className="bi bi-plus"></i>{content}
+                                </button>
+                            </a>
                         </Link>
 
                     </div>
@@ -39,7 +41,7 @@ function TopBar({ searchString, searchFunction, content, title, addLink, count }
                     {/* total count */}
                     <div className="col-auto">
                         <div className={styles.count}>
-                            
+
                             <button type="button" className="btn btn-light btn-lg" disabled>Σύνολο: {count}</button>
                         </div>
                     </div>

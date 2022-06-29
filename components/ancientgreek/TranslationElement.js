@@ -71,31 +71,31 @@ function TranslationElement({ data, initial }) {
         const editLink = "/ancientgreek/translations/editTranslation/" + data.id.toString();
         let taksi = "";
         switch (data.taksh) {
-            case 1 :{
+            case 1: {
                 taksi = "Α' Γυμνασίου";
                 break
             }
-            case 2 :{
+            case 2: {
                 taksi = "Β' Γυμνασίου";
                 break
             }
-            case 3 :{
+            case 3: {
                 taksi = "Γ' Γυμνασίου";
                 break
             }
-            case 4 :{
+            case 4: {
                 taksi = "Α' Λυκείου";
                 break
             }
-            case 5 :{
+            case 5: {
                 taksi = "Β' Λυκείου";
                 break
             }
-            case 6 :{
+            case 6: {
                 taksi = "Γ' Λυκείου ΓΕΛ";
                 break
             }
-            case 7 :{
+            case 7: {
                 taksi = "Γ' Λυκείου ΕΠΑΛ";
                 break
             }
@@ -120,8 +120,10 @@ function TranslationElement({ data, initial }) {
 
                     {/* edit button */}
                     <div className="col col-1">
-                        <Link href={editLink}>
-                            <button type="button" className="btn btn-warning"><i className="bi bi-pencil-fill"></i></button>
+                        <Link href={editLink} passHref>
+                            <a target="_blank">
+                                <button type="button" className="btn btn-warning"><i className="bi bi-pencil-fill"></i></button>
+                            </a>
                         </Link>
                     </div>
 
