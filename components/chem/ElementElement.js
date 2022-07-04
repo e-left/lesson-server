@@ -91,7 +91,7 @@ function ElementElement({ data, initial }) {
                     {/* edit button */}
                     <div className="col col-1">
                         <Link href={editLink} passHref>
-                            <a target="_blank">
+                            <a  >
                                 <button type="button" className="btn btn-warning"><i className="bi bi-pencil-fill"></i></button>
                             </a>
                         </Link>

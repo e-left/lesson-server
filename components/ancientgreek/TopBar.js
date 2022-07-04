@@ -24,7 +24,7 @@ function TopBar({ searchString, searchFunction, content, title, addLink, count }
                     {/* new word button */}
                     <div className="col-auto">
                         <Link href={addLink} passHref>
-                            <a target="_blank">
+                            <a>
                                 <button type="button" className="btn btn-success btn-lg">
                                     <i className="bi bi-plus"></i>{content}
                                 </button>

@@ -46,7 +46,16 @@ class QuillEditor extends React.Component {
           toolbar: {
             container: [
               ["video", "image", "bold", "italic", "underline", "strike", "formula"],
-              [{ 'script': 'sub' }, { 'script': 'super' }]
+              [{ 'script': 'sub' }, { 'script': 'super' }],
+              [{ 'color': [] }, { 'background': [] }],
+              [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+              ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
+              ['blockquote', 'code-block'],
+              [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+              [{ 'indent': '-1' }, { 'indent': '+1' }],          // outdent/indent
+              [{ 'font': [] }],
+              [{ 'align': [] }],
+              ['clean']                                         // remove formatting button
             ],
             handlers: {
               image: this.imageHandler
